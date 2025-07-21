@@ -112,4 +112,4 @@ venv\Scripts\activate  # Windows
 
 ### 联系方式
 - Telegram Group : [aigalgame](https://t.me/aigalgame)
-- QQ Group: [1055935861](https://qm.qq.com/cgi-bin/qm/qr?k=1055935861)
+- QQ Group: [1055935861](https://qm.qq.com/q/GTaZGFXqIQ)

@@ -3,9 +3,9 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "LingChat Docs",
-  description: "LingChat的非官方文档",
+  description: "LingChat的官方文档",
   head: [
-    ['link', { rel: 'icon', href: '/avatars/MaiM.png' }]
+    ['link', { rel: 'icon', href: '/avatars/LingChat.png' }]
   ],
   themeConfig: {
     search: {

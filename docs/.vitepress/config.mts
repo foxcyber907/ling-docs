@@ -18,13 +18,13 @@ export default defineConfig({
       { text: '常见问题', link: '/faq/' },
       {
         text: '官方Q群', items: [
-          { text: '安装答疑群', link: 'https://qm.qq.com/q/GTaZGFXqIQ' },
-          { text: '开发者群', link: 'https://qm.qq.com/q/ekNYyVX7iM' }
+          { text: 'QQ安装答疑群', link: 'https://qm.qq.com/q/GTaZGFXqIQ' },
+          { text: 'Telegram安装答疑群', link: 'https://t.me/aigalgame' }
         ]
       },
     ],
 
-sidebar: {
+    sidebar: {
       '/manual/': [
         {
           text: '用户手册',
@@ -36,18 +36,19 @@ sidebar: {
           text: '部署方法',
           collapsed: false,
           items: [
-            { text: 'Docker部署', link: '/manual/docker/' },
-            { text: 'Linux部署', link: '/manual/linux/' },
-            { text: 'Windows部署', link: '/manual/windows/' }
-          ]}
+            { text: '基于Lingchat的开发文档', link: '/manual/开发文档.md' },
+            { text: 'Windows环境配置与使用指南', link: '/manual/Windows环境配置与使用指南.md' },
+            { text: 'AI-Galgame 剧情创作指南', link: '/manual/AI-Galgame剧情创作指南.md' }
+          ]
+        },
       ],
       '/faq/': [
-            {
+        {
           text: '常见错误',
-              collapsed: false,
+          collapsed: false,
           items: [
             { text: '代码报错', link: '/faq/coding/' },
-            {text: '截图错误', link: '/faq/screen/'}
+            { text: '截图错误', link: '/faq/screen/' }
           ]
         }
       ]

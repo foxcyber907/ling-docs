@@ -48,6 +48,8 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 ### 一、安装 ZeroTermux 环境
 前往 [ZeroTermux-Github](https://github.com/hanxinhao000/ZeroTermux/releases/tag/release) 下载ZeroTermux安装包并安装。
 
+如果下载太慢或无法下载，可尝试使用 [Github镜像源](https://ghfast.top/github.com/hanxinhao000/ZeroTermux/releases/download/release/ZeroTermux-0.118.1.43.apk) 下载并安装。
+
 **注意：安装其他版本或者选择Termux会导致以下教程出现部分的不适用，不建议这样做**
 
 进入ZeroTermux软件界面，提示完整阅读协议时记得要把文字内容拉到最底下。

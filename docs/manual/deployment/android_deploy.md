@@ -24,7 +24,7 @@ outline:
 ### 具体操作
 > 请确保电脑和手机在 **同一网络** 下，否则无法使用。
 
-> 如有需要可参考 [Windows 部署](/manual/deployment/windows_deploy) 教程。
+> 如有需要可参考 [Windows 部署](/manual/deployment/win_deploy) 教程。
 
 首先，查看电脑 ip 地址，如果你的电脑是 Windows 系统，先在键盘上同时按下 **Windows徽标键+字母R键** 输入 **cmd** 打开命令提示符，再在黑窗口中输入 **ipconfig** ，回车，窗口中可能出现以下内容：
 

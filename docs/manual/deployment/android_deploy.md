@@ -45,7 +45,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 ## 二、纯手机的使用 {#pure_phone_deploy}
 
-### 一、安装 ZeroTermux 环境
+### 安装 ZeroTermux 环境
 前往 [ZeroTermux-Github](https://github.com/hanxinhao000/ZeroTermux/releases/tag/release) 下载ZeroTermux安装包并安装。
 
 如果下载太慢或无法下载，可尝试使用 [Github镜像源](https://ghfast.top/github.com/hanxinhao000/ZeroTermux/releases/download/release/ZeroTermux-0.118.1.43.apk) 下载并安装。
@@ -58,7 +58,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 > [!NOTE] 如无特殊说明，当出现 `(Y/I/N/O/D/Z)[default=?]` 或 `[Y/N]` 时，直接点击回车，选择默认选项即可。
 
-### 解除进程限制（安卓 12 以上）
+### 可选：解除进程限制（安卓 12 以上）
 
 > 这一步只需安卓 12 以上版本的手机操作，如果你不清楚你的手机版本，推荐操作一下。
 >
@@ -95,9 +95,8 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 #### 使用预先打包好的容器
 
 > 内置的 LingChat来自[我的分支](https://github.com/shadow01a/LingChat/tree/develop-termux)，因为develop分支更新比较频繁，避免更新出什么奇怪的问题......
-##### 安装容器
 
->如果还在tmoe界面，请先退出。
+##### 安装容器
 
 在 **ZeroTermux 的终端** 复制执行以下命令，这将下载本人打包好的容器：
 ```
@@ -112,7 +111,11 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 
 ```
 
-下载完毕后，直接在终端输入 `tmoe` 打开 tmoe，之后请回到 proot 界面，滑动屏幕选择 **恢复/还原proot容器** 回车，出现下图：
+下载完毕后，再次按下 手机音量键上（+），点击 **MOE全能** ，这里会跳出提示，你需要在选择源时选择 **gitee** （一般是回车），还有在 **协议部分** 需要手动输入 `y` 以确定开始安装。
+
+之后没有问题会进入主界面，此时选择最上面的 **proot** 回车。
+
+等待安装完毕后，滑动屏幕选择 **恢复/还原proot容器** 回车，出现下图：
 
 ![](/assets/depoly_android/restore-1.jpg)
 
@@ -144,6 +147,10 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 ##### 更新 LingChat
 
 输入 `bash update.sh` 即可自动更新
+
+#### 使用 proot-distro 部署
+
+咕咕
 
 #### 其他方法
 > 待更新，咕咕咕......

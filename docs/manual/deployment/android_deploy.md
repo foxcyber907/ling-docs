@@ -39,7 +39,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 记下 `0.0.0.0:` 之后的数字，这是 **端口号** 。（可能与示例不同，请以实际为准）
 
-打开你的手机浏览器，手机调为横屏，在地址栏输入 **ip地址 + 一个英文的分号（:) + 端口号** 即可使用。正常情况下如下图：
+打开你的手机浏览器，手机调为横屏，在地址栏输入 **ip地址 + 一个英文的分号（: \) + 端口号** 即可使用。正常情况下如下图：
 
 ![手机前端演示](/assets/depoly_android/手机前端演示.jpg)
 
@@ -48,11 +48,13 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 ### 一、安装 ZeroTermux 环境
 前往 [ZeroTermux-Github](https://github.com/hanxinhao000/ZeroTermux/releases/tag/release) 下载ZeroTermux安装包并安装。
 
+如果下载太慢或无法下载，可尝试使用 [Github镜像源](https://ghfast.top/github.com/hanxinhao000/ZeroTermux/releases/download/release/ZeroTermux-0.118.1.43.apk) 下载并安装。
+
 **注意：安装其他版本或者选择Termux会导致以下教程出现部分的不适用，不建议这样做**
 
 进入ZeroTermux软件界面，提示完整阅读协议时记得要把文字内容拉到最底下。
 
-双击屏幕左侧边缘（部分ZT版本是按音量上/下键），下滑并点击"切换源"，随意选择，推荐选择`清华源`，等待脚本运行完成。
+双击屏幕左侧边缘（部分ZT版本是按音量上/下键），下滑并点击"切换源"，推荐选择`清华源`，等待脚本运行完成。
 
 > [!NOTE] 如无特殊说明，当出现 `(Y/I/N/O/D/Z)[default=?]` 或 `[Y/N]` 时，直接点击回车，选择默认选项即可。
 

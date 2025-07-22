@@ -1,96 +1,83 @@
-# 本文档旨在解决安装的所有问题
+# 🚀 LingChat 排障速查
 
-## 1. 软件基础问题
+## TTS服务问题
+**问题**: TTS服务不可达，语音功能被禁用
 
-> 这部分解答所有启动 Lingchat，对话和语音问题的疑问
+**可能原因**:
+- 防火墙阻止了端口访问
+- simple-vits-api服务未运行
+- 程序需要重新加载服务
 
-### 启动问题
+**解决方案**:
+1. 检查并开放防火墙相关端口
+2. 确保simple-vits-api服务已启动
+3. 重新启动LingChat程序
 
-#### Lingchat 启动半天都在转圈圈
-![3c06ff9da6aa261ba2855d0c512f656e](https://github.com/user-attachments/assets/ca13a991-4e8a-4c0d-b98e-67be36845a79)
+## 大模型API请求错误
+| 错误代码 | 问题描述 | 解决方案 |
+|---------|---------|---------|
+| 400 | 无效请求或余额不足 | 检查请求格式或充值API账户 |
+| 401 | API密钥无效 | 检查并更新LingChat设置中的API密钥 |
+| 402 | 余额不足 | 检查API账户余额或充值 |
+| 403 | 权限不足 | 检查API密钥权限 |
+| 404 | 资源未找到 | 检查API端点是否正确 |
+| 405 | 方法不允许 | 检查API文档或联系服务提供商 |
+| 406 | 不可接受的请求 | 检查请求头或联系开发团队 |
+| 407 | 请求超时 | 检查网络连接或稍后重试 |
+| 408 | 连接超时 | 检查网络连接 |
+| 409 | 请求冲突 | 检查请求参数或联系服务提供商 |
+| 422 | 参数错误 | 检查所有必需参数 |
+| 429 | 请求频率过高/请求过多 | 降低请求频率或升级API套餐，减少请求频率或等待一段时间 |
+| 500 | 服务器内部错误/内部服务器错误 | 稍后重试或联系服务提供商/联系API提供商 |
+| 502 | 错误的网关 | 检查API服务状态或稍后重试 |
+| 503 | 服务不可用 | 检查API服务状态或稍后重试 |
+| 504 | 网关超时 | 检查网络连接或稍后重试 |
+| 505 | HTTP版本不受支持 | 检查API文档或联系服务提供商 |
+| 511 | 需要网络认证 | 检查网络连接 |
+| 520 | 未知错误 | 检查API服务状态或联系开发团队 |
 
-- 多等一会，初始化时间比较长，在此期间不要关闭，如果最后还是无法启动，那没救了（，你的电脑可能是 20 多年前的老古董
+## 端口占用问题
+**问题**: "通常每个套接字地址只允许使用一次"
 
-#### 通常每个套接字地址(地址/网络地址/端口)只允许使用一次
-![image](https://github.com/user-attachments/assets/ea51c143-12da-4c7a-9c5e-8f18bc54b673)
+**解决方案**:
+1. 请使用`netstat -ano`查找占用端口的进程
+2. 终止相关进程或更改LingChat使用的端口
+3. 重启计算机（终极解决方案）
 
-- 可能你的上一个 Lingchat 没有关闭，或者有其他从程序占用了 8765 这个端口，你可以检查是哪个程序占用的，把它那个程序给关了
+## ERROR: Could not find Python 3.10, 3.11, or 3.12 using the 'py' launcher.
+**问题**: 找不到Python 3.10, 3.11或3.12
+**解决方案**:
+1. 确保已安装Python 3.10, 3.11或3.12,如未安装请前往下载！下载地址"[https://www.python.org/downloads/](https://www.python.org/downloads/)"
+2. 在Windows上，确保Python安装路径已添加到系统环境变量中
+3. 在Linux上，使用`update-alternatives --config python`设置默认Python版本
+4. 在Mac上，使用`brew install python@3.10`安装Python 3.10
 
-#### 极少数出现：哪个浏览器都卡死在加载页面
-- 用记事本打开backend\api\frontend_router.py，把文件内容更换为以下内容，重启程序即可修复：
-```python
-from fastapi import APIRouter, Request, Response  # 新增 Response
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
-import os
-from pathlib import Path  # 新增 Path 用于更安全的路径操作
+## ERROR: Failed to activate the existing virtual environment. Check if it's corrupted.
+**问题**: 无法激活现有虚拟环境，可能已损坏
+**解决方案**:
+1. 尝试重新创建虚拟环境
+2. 检查虚拟环境目录的完整性
+3. 确保使用正确的Python版本
+4. 删除现有虚拟环境并重新创建
+   ```bash
+   rm -rf venv
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   venv\Scripts\activate  # Windows
+   ```
 
-router = APIRouter()
+## ERROR: Failed to install the required packages.
+**问题**: 无法安装所需的Python包
+**解决方案**:
+1. 检查网络连接
+2. 确保使用正确的Python版本
+3. 尝试手动安装缺失的包
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-frontend_dir = os.path.join(root_dir, 'frontend', 'public')
-
-# ✅ 自定义 StaticFiles（禁用缓存）
-class NoCacheStaticFiles(StaticFiles):
-    async def get_response(self, path: str, scope):
-        response = await super().get_response(path, scope)
-        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-        response.headers["Pragma"] = "no-cache"
-        response.headers["Expires"] = "0"
-        
-        # ✅ 新增：强制修正 JS 文件的 Content-Type
-        if path.endswith('.js'):
-            response.headers["Content-Type"] = "application/javascript"
-            
-        return response
-
-# ✅ 托管所有静态资源（保持原有路径结构）
-def get_static_files():
-    return NoCacheStaticFiles(directory=frontend_dir)
-
-# ✅ 保持原有HTML路由
-def get_file_response(file_path: str) -> FileResponse:
-    response = FileResponse(file_path)
-    response.headers.update({
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0"
-    })
-    return response
-
-# ✅ 新增：方案二修复方法 - 手动处理关键JS文件
-@router.get("/app.js")  # 假设这是你的主JS文件
-async def serve_app_js():
-    js_path = Path(frontend_dir) / "app.js"  # 根据实际路径调整
-    if not js_path.exists():
-        raise HTTPException(status_code=404)
-    
-    # ✅ 强制返回正确的 Content-Type
-    return Response(
-        content=js_path.read_bytes(),
-        media_type="application/javascript",
-        headers={
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Pragma": "no-cache"
-        }
-    )
-
-@router.get("/")
-async def index():
-    return get_file_response(os.path.join(frontend_dir, "pages", "index.html"))
-
-@router.get("/about")
-async def about():
-    return get_file_response(os.path.join(frontend_dir, "pages", "about.html"))
-
-@router.get("/settings")
-async def settings():
-    return get_file_response(os.path.join(frontend_dir, "pages", "settings.html"))
-```
-
-### 新虚拟环境激活失败
+## ERROR: Failed to activate the new virtual environment.
 **问题**: 无法激活新的虚拟环境
-
 **解决方案**:
 1. 确保虚拟环境已正确创建，文件地址在"./venv"
 2. 检查虚拟环境目录是否存在
@@ -100,15 +87,3 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 ```
 
----
-
-## 支持与联系
-### 联系支持
-如问题仍未解决，请加入联系开发团队并提供以下信息：
-- 错误日志截图
-- 问题发生时的操作步骤
-- 系统环境信息
-
-### 联系方式
-- Telegram Group : [aigalgame](https://t.me/aigalgame)
-- QQ Group: [1055935861](https://qm.qq.com/q/GTaZGFXqIQ)

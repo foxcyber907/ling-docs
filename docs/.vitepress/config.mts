@@ -7,6 +7,10 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/avatars/LingChat.png' }]
   ],
+      editLink: {
+      pattern: 'https://github.com/foxcyber907/ling-docs/edit/main/docs/:path',
+      text: '在 GitHub 编辑此页'
+    },
   themeConfig: {
     search: {
       provider: 'local',
@@ -17,7 +21,7 @@ export default defineConfig({
       { text: '开发文档', link: '/develop/' },
       { text: '常见问题', link: '/faq/' },
       {
-        text: '官方Q群', items: [
+        text: '官方群聊', items: [
           { text: 'QQ安装答疑群', link: 'https://qm.qq.com/q/GTaZGFXqIQ' },
           { text: 'Telegram安装答疑群', link: 'https://t.me/aigalgame' }
         ]
@@ -36,9 +40,10 @@ export default defineConfig({
           text: '部署方法',
           collapsed: false,
           items: [
-            { text: '基于Lingchat的开发文档', link: '/manual/开发文档.md' },
-            { text: 'Windows环境配置与使用指南', link: '/manual/Windows环境配置与使用指南.md' },
-            { text: 'AI-Galgame 剧情创作指南', link: '/manual/AI-Galgame剧情创作指南.md' }
+            { text: 'Windows部署', link: '/manual/deployment/win_deploy' },
+            { text: 'Android部署', link: '/manual/deployment/android_deploy' },
+            { text: 'Linux部署', link: '/manual/deployment/linux_deploy' },
+              { text: '从源码构建', link: '/manual/deployment/source_deploy' },
           ]
         },
       ],
@@ -48,7 +53,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '代码报错', link: '/faq/coding/' },
-            { text: '截图错误', link: '/faq/screen/' }
+            { text: '截图错误', link: '/faq/screen/' },
+            {text: '联系与支持', link: '/faq/contact'}
           ]
         }
       ]
@@ -57,5 +63,12 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/SlimeBoyOwO/LingChat/' }
     ],
+        lastUpdated: {
+      text: "最后更新",
+      formatOptions: {
+        dateStyle: "short",
+        timeStyle: "short",
+      },
+    },
   }
 })

@@ -7,11 +7,12 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/avatars/LingChat.png' }]
   ],
+
+  themeConfig: {
       editLink: {
       pattern: 'https://github.com/foxcyber907/ling-docs/edit/main/docs/:path',
       text: '在 GitHub 编辑此页'
     },
-  themeConfig: {
     search: {
       provider: 'local',
     },
@@ -46,6 +47,14 @@ export default defineConfig({
               { text: '从源码构建', link: '/manual/deployment/source_deploy' },
           ]
         },
+        // {
+        //   text: '额外功能',
+        //   collapsed: false,
+        //   items: [
+        //     { text: 'RGA', link: '/manual/deployment/win_deploy' },
+        //     { text: '语音生成', link: '/manual/deployment/android_deploy' }
+        //   ]
+        // },
       ],
       '/faq/': [
         {

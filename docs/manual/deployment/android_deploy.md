@@ -183,13 +183,13 @@ proot-distro install debian
 ```bash
 # 备份 + 更换清华源 + 更新
 cp /etc/apt/sources.list /etc/apt/sources.list.bak && \
-tee /etc/apt/sources.list << 'EOF' && \
-apt update
+tee /etc/apt/sources.list << 'EOF'
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
 deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
 EOF
+apt update
 
 #安装sqlite3依赖
 apt install sqlite3 -y

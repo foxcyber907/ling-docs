@@ -1,5 +1,7 @@
 # LingChat 文档
 
+本项目为 [LingChat项目](https://github.com/SlimeBoyOwO/LingChat/)的文档部分
+
 ## 关于文档
 
 此文档站点使用 [VitePress](https://vitepress.dev/) 构建

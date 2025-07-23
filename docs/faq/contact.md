@@ -7,3 +7,4 @@
 # 联系方式
 - Telegram Group : [aigalgame](https://t.me/aigalgame)
 - QQ Group: [1055935861](https://qm.qq.com/q/cOfFdqHRXW)
+- Github 项目主页：[SlimeBoyOwO/LingChat](https://github.com/SlimeBoyOwO/LingChat/issues/)

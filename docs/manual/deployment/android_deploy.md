@@ -11,7 +11,7 @@ outline:
    - 适合大多数用户，使用手机和电脑配合部署。
    - 使用手机浏览器访问电脑上的 LingChat，并在电脑上运行后端服务。
 2. [纯手机使用](/manual/deployment/android_deploy#pure_phone_deploy)
-   - 适合没有电脑的用户。
+   - 适合没有电脑或想折腾的用户。
 :::
 
 :::  warning
@@ -31,7 +31,7 @@ outline:
 ![cmd-ipconfig](/assets/depoly_android/cmd-ipconfig.jpg)
 记下其中的 **IPv4 地址** 后的 **ip地址**。
 
-然后在电脑上打开  LingChat，观察命令提示符（黑窗口）中是否有这一行字：
+然后在电脑上打开 LingChat，观察命令提示符（黑窗口）中是否有这一行字：
 
 ```
 INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
@@ -45,7 +45,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 ## 二、纯手机的使用 {#pure_phone_deploy}
 
-### 一、安装 ZeroTermux 环境
+### 安装 ZeroTermux 环境
 前往 [ZeroTermux-Github](https://github.com/hanxinhao000/ZeroTermux/releases/tag/release) 下载ZeroTermux安装包并安装。
 
 如果下载太慢或无法下载，可尝试使用 [Github镜像源](https://ghfast.top/github.com/hanxinhao000/ZeroTermux/releases/download/release/ZeroTermux-0.118.1.43.apk) 下载并安装。
@@ -58,13 +58,15 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 > [!NOTE] 如无特殊说明，当出现 `(Y/I/N/O/D/Z)[default=?]` 或 `[Y/N]` 时，直接点击回车，选择默认选项即可。
 
-### 解除进程限制（安卓 12 以上）
+### 可选：解除进程限制（安卓 12 以上）
 
 > 这一步只需安卓 12 以上版本的手机操作，如果你不清楚你的手机版本，推荐操作一下。
 >
 > 另外你需要打开手机开发者选项，详情搜索百度。
 >
 > 华为或荣耀设备请跳过此步，因为暂时用不了。
+
+首先 [安装 tmoe](/manual/deployment/android_deploy#install_tmoe)。
 
 上下滑动屏幕选择 **修复 android 12** ，回车，看提示选择（一般全回车默认），直到下图：
 
@@ -86,18 +88,21 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 ![](/assets/depoly_android/adb-ok.jpg)
 
-### 部署  LingChat
+### 部署 LingChat
 
 我们提供多种方式部署 LingChat，您可以选择最合适的进行操作。当一种方式不行时，可以更换另一种方式。
 
-（实际上现在只有一种......以后更新）
+1. [使用 tmoe 安装打包好的容器](/manual/deployment/android_deploy#use_tmoe)
+   - 基本上不会出现问题，最简便。
 
-#### 使用预先打包好的容器
+2. [使用 proot-distro 和打包好的 python](/manual/deployment/android_deploy#use-proot-distro)
+   - 更加轻量化，但可能有未知问题。
+
+#### 方法一：使用预先打包好的容器 {#use_tmoe}
 
 > 内置的 LingChat来自[我的分支](https://github.com/shadow01a/LingChat/tree/develop-termux)，因为develop分支更新比较频繁，避免更新出什么奇怪的问题......
-##### 安装容器
 
->如果还在tmoe界面，请先退出。
+##### 下载容器
 
 在 **ZeroTermux 的终端** 复制执行以下命令，这将下载本人打包好的容器：
 ```
@@ -112,7 +117,17 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 
 ```
 
-下载完毕后，直接在终端输入 `tmoe` 打开 tmoe，之后请回到 proot 界面，滑动屏幕选择 **恢复/还原proot容器** 回车，出现下图：
+##### 安装tmoe {#install_tmoe}
+
+下载完毕后，再次按下 手机音量键上（+），点击 **MOE全能** ，这里会跳出提示，你需要在选择源时选择 **gitee** （一般是回车），还有在 **协议部分** 需要手动输入 `y` 以确定开始安装。
+
+之后没有问题会进入主界面。
+
+##### 安装 proot 和容器
+
+在 tmoe 中选择最上面的 **proot** 回车。
+
+等待安装完毕后，滑动屏幕选择 **恢复/还原proot容器** 回车，出现下图：
 
 ![](/assets/depoly_android/restore-1.jpg)
 
@@ -129,33 +144,211 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 > 如果出现以下界面，直接确定。
 > ![](/assets/depoly_android/batterychoose.jpg)
 
-##### 启动 LingChat
+OK啦，LingChat安装完毕！接下来到下面学习如何启动它。
 
-打开容器后，输入 `bash lingchat.sh`，即可打开 LingChat服务端，之后打开你的手机浏览器，手机调为横屏，在地址栏输入 `127.0.0.1:12746` 即可使用。如下图：
+#### 方法二：使用 proot-distro 部署 {#use-proot-distro}
+
+输入以下命令 **安装 proot-distro**。
+
+```bash
+pkg install proot-distro -y
+
+proot-distro install debian
+```
+
+> [!NOTE] 这样安装可能会有点慢或干脆无法下载（github的锅）。此时运行以下命令安装debian：
+> ```bash
+> pkg install wget -y
+> wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/proot-distro-debian-bookwarm-0721.tar.xz
+> proot-distro restore ./proot-distro-debian-bookwarm-0721.tar.xz
+> rm -rf proot-distro-debian-bookwarm-0721.tar.xz
+> ```
+
+这时候 debian 应该安装好了，输入 `proot-distro login debian` 登录 debian。
+
+之后你需要克隆 LingChat项目文件，运行的命令有以下选择：
+
+> [!NOTE] 命令都加上了加速站，如有介意者自行删除使用官方源。
+
+ - `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺。
+ 
+ - `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
+ 
+ - `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试，但未经官方审查。
+ 
+根据你自己需求选择一条命令运行。
+
+克隆完毕后，运行以下命令 **安装 python 及其依赖** ：
+
+```bash
+# 备份 + 更换清华源 + 更新
+cp /etc/apt/sources.list /etc/apt/sources.list.bak && \
+tee /etc/apt/sources.list << 'EOF'
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware
+deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+EOF
+apt update
+
+#安装sqlite3依赖
+apt install sqlite3 -y
+
+#安装预先打包的 python3.12.10
+wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/python-3.12.10-lingchat-250707.tar.gz
+tar -xzf /root/python-3.12.10-lingchat-250707.tar.gz -C /root
+rm -rf python-3.12.10-lingchat-250707.tar.gz
+```
+
+安装完毕后即可正常使用，但为了以后简便点，我们还要做一步：
+
+```bash
+# 启动脚本
+tee /root/lingchat.sh > /dev/null << 'EOF'
+cd LingChat
+/root/python3.12.10/bin/python3.12 backend/windows_main.py
+EOF
+
+chmod +x /root/lingchat.sh
+# 更新脚本
+tee /root/update.sh > /dev/null << 'EOF'
+cd LingChat
+git pull
+/root/python3.12.10/bin/python3.12 -m pip install -r requirements.txt
+EOF
+
+chmod +x /root/update.sh
+```
+
+这样以后可以用 `bash lingchat.sh` 启动 LingChat，用 `bash update.sh` 命令更新 LingChat。
+
+### 配置 LingChat
+
+::: info
+
+接下来的步骤请打开容器。
+
+如果你是使用 **方法一** 安装，在 ZeroTermux的终端输入 `debian` 启动安装好的容器。
+
+如果你是使用 **方法二** 安装，在 ZeroTermux的终端输入 `proot-distro login debian` 启动安装好的容器。
+
+:::
+
+这样部署的 LingChat 不能直接使用，需要一些配置。
+
+首先，获取 api_key 等内容，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) ， [硅基流动API获取网站](https://api.siliconflow.com/) 等地方获取。
+
+然后，在容器中先粘贴以下命令，再粘贴你的 api_key ，回车运行 ：
+
+```bash
+export API_KEY=
+```
+
+之后再运行此命令：
+
+```bash
+cd LingChat
+tee /root/LingChat/.env > /dev/null << EOF
+# 基础设置 BEGIN
+
+## API 与 模型 设置 BEGIN # 配置与AI模型和API相关的密钥和地址
+LLM_PROVIDER="webllm" # 在这里选择对话模型，只可以填写webllm, gemini, ollama, lmstudio四个选项，webllm代表通用需要联网的AI模型（如deepseek），ollama和lmstudio表示本地，gemini如名）
+
+CHAT_API_KEY="$API_KEY" # DeepSeek 或其他聊天模型的 API Key
+
+VD_API_KEY="sk-114514" # 图像识别模型的 API Key
+CHAT_BASE_URL="https://api.deepseek.com" # API的访问地址
+MODEL_TYPE="deepseek-chat" # 使用的模型类型
+VD_BASE_URL="https://api.siliconflow.cn/v1" # 视觉模型的API访问地址
+VD_MODEL="Pro/Qwen/Qwen2.5-VL-7B-Instruct" # 视觉模型的模型类型
+
+OLLAMA_BASE_URL="http://localhost:11434" # Ollama配置- 地址
+OLLAMA_MODEL="llama3" # Ollama配置- 模型
+
+LMSTUDIO_MODEL_TYPE="unknow" # LM STUDIO 配置- 模型
+LMSTUDIO_BASE_URL="http://localhost:1234/v1" # LM STUDIO 配置- 地址
+LMSTUDIO_API_KEY="lm-studio" # LM STUDIO 配置- APIKEY 似乎不需要
+
+GEMINI_API_KEY="sk-114514"
+GEMINI_MODEL_TYPE="gemini-pro"
+## API 与 模型 设置 END
+
+## 对话功能设定 BEGIN # 配置RAG（检索增强生成）系统，让AI能“记忆”历史对话
+USE_RAG=false # 是否启用RAG系统 [type:bool]
+USE_TIME_SENSE=true # 是否启用时间感知 [type:bool]
+## 对话功能设定 END
+
+# 基础设置 END
+
+# 开发者设置 BEGIN
+
+## RAG系统设定 BEGIN # 配置RAG（检索增强生成）系统，让AI能“记忆”历史对话
+RAG_RETRIEVAL_COUNT=3 # 每次回答时检索的相关历史对话数量
+RAG_WINDOW_COUNT=5 # 取当前的最新N条消息作为短期记忆，之后则是RAG消息，然后是过去的记忆。
+RAG_HISTORY_PATH="data/rag_chat_history" # RAG历史记录存储路径
+CHROMA_DB_PATH="data/chroma_db_store" # ChromaDB向量数据库的存储路径
+RAG_PROMPT_PREFIX="--- 以下是根据你的历史记忆检索到的相关对话片段，请参考它们来回答当前问题。这些是历史信息，不是当前对话的一部分： ---" # RAG前缀提示，支持多行
+RAG_PROMPT_SUFFIX="--- 以上是历史记忆检索到的内容。请注意，这些内容用于提供背景信息，你不需要直接回应它们，而是基于它们和下面的当前对话来生成回复。 ---" # RAG后缀提示，支持多行
+## RAG系统设定 END
+
+## 存储与日志 BEGIN # 配置日志和其他文件的存储位置
+BACKEND_LOG_DIR="data/logs" # 后端服务日志目录
+APP_LOG_DIR="data/log" # 应用行为日志目录
+TEMP_VOICE_DIR="frontend/public/audio" # 临时生成的语音文件存放目录
+ENABLE_FILE_LOGGING=false # 是否将日志记录到文件
+LOG_FILE_DIRECTORY="data/run_logs" # 日志文件的存储目录
+## 存储与日志 END
+
+## Debug信息 BEGIN # 用于开发和调试的设置
+LOG_LEVEL=INFO # 日志设置：默认为INFO，设置为DEBUG时启用开发者模式，输出更详尽的日志
+PRINT_CONTEXT=true # 更改True/False，决定是否把本次发送给llm的全部上下文信息截取后打印到终端
+## Debug信息 END
+
+## 服务端口配置 BEGIN # 配置各个服务的网络监听地址和端口
+BACKEND_BIND_ADDR="0.0.0.0" # 后端监听地址
+BACKEND_PORT=12746 # 后端监听端口
+FRONTEND_BIND_ADDR="0.0.0.0" # 前端监听地址
+FRONTEND_PORT=3000 # 前端监听端口
+EMOTION_BIND_ADDR="0.0.0.0" # 情感分析服务监听地址
+EMOTION_PORT=8000 # 情感分析服务监听端口
+## 服务端口配置 END
+
+# 开发者设置 END
+
+EOF
+
+cd
+
+```
+
+这样就配置完成了。
+
+> [!NOTE] 默认未开启RAG功能，因为这必定会导致启动后第一次的白屏，需要等待加载完成刷新才行，有需要请自行在网页打开或修改.env文件。
+
+### 启动 LingChat
+
+配置完成后，每次启动容器之后，就可以输入 `bash lingchat.sh` 打开 LingChat服务端，待没有东西继续输出之后，打开你的手机浏览器，手机调为横屏，在地址栏输入 `127.0.0.1:12746` 即可使用。如下图：
 
 ![](/assets/depoly_android/手机前端演示.jpg)
 
-##### 配置 LingChat
+### 更新 LingChat
 
-这样部署的 LingChat 不能直接使用，请自行配置 api_key 等内容，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) ， [硅基流动API获取网站](https://api.siliconflow.com/) 获取
-
-另外默认未开启RAG功能，因为这必定会导致启动后第一次的白屏，需要等待加载完成刷新才行，有需要请自行打开。
-
-##### 更新 LingChat
-
-输入 `bash update.sh` 即可自动更新
-
-#### 其他方法
-> 待更新，咕咕咕......
+输入 `bash update.sh` 即可自动更新。
 
 ## 常见问题
 
 ### 输入地址无响应？
 
 将 ZeroTermux 分屏或小窗使用。
+
 ### 输入地址后只有白屏？
 
 看看 ZeroTermux 终端是否还在加载，加载完毕后刷新浏览器。
+
 ### 浏览器排版不对？
 
 界面还没有适配，等更新吧......
+
+### 其它问题？
+
+去 [这个文档](/faq/contact) 联系开发者求助。

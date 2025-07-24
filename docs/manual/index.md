@@ -16,6 +16,10 @@
 - 治学守时，寒暑无辍，是为律。
 - 灵门🙏🏻
 
+<AudioBox src="/maxim.flac">
+  灵门箴言
+</AudioBox>
+
 ## 正文
 在这个页面中，你将了解到如何部署，配置和使用Lingchat
 

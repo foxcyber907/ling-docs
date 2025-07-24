@@ -55,7 +55,7 @@ export default withMermaid(
               { text: 'Windows部署', link: '/manual/deployment/win_deploy' },
               { text: 'Android部署', link: '/manual/deployment/android_deploy' },
               { text: 'Linux部署', link: '/manual/deployment/linux_deploy' },
-                { text: '从源码构建', link: '/manual/deployment/source_deploy' },
+                // { text: '从源码构建', link: '/manual/deployment/source_deploy' },
             ]
           },
           {

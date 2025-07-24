@@ -125,7 +125,7 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 
 先点击回车，进入 **协议部分** ，你需要手动输入 `y` 然后回车。
 
-接下来，你需要在选择源时选择 **gitee** 。（如果提示是：是否从 gitee 获取相关文件? /[Y//n/]  则回车开始安装，反之输入一个字母 **n** 再回车）
+接下来，你需要在选择源时选择 **gitee** 。（如果提示是：是否从 gitee 获取相关文件? [Y/n]  则回车开始安装，反之输入一个字母 **n** 再回车）
 
 之后没有问题会进入主界面。
 

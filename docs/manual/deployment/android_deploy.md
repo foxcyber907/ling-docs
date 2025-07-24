@@ -15,7 +15,7 @@ outline:
 :::
 
 :::  warning
-手机版由于界面暂未适配，可能界面有点奇怪，最好用平板。
+在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
 :::
 
 ## 一、 手机+电脑的配合使用 {#phone_win_deploy}
@@ -54,7 +54,9 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 进入ZeroTermux软件界面，提示完整阅读协议时记得要把文字内容拉到最底下。
 
-双击屏幕左侧边缘（部分ZT版本是按音量上/下键），下滑并点击"切换源"，推荐选择`清华源`，等待脚本运行完成。
+双击屏幕左侧边缘（部分ZT版本是按音量上/下键），下滑并点击"切换源"。（推荐选择`清华源`）
+
+等待运行完成后，再重复一遍。（让手机加深印象）
 
 > [!NOTE] 如无特殊说明，当出现 `(Y/I/N/O/D/Z)[default=?]` 或 `[Y/N]` 时，直接点击回车，选择默认选项即可。
 
@@ -119,7 +121,11 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/maste
 
 ##### 安装tmoe {#install_tmoe}
 
-下载完毕后，再次按下 手机音量键上（+），点击 **MOE全能** ，这里会跳出提示，你需要在选择源时选择 **gitee** （一般是回车），还有在 **协议部分** 需要手动输入 `y` 以确定开始安装。
+下载完毕后，再次按下 手机音量键上（+），点击 **MOE全能** ，这里会跳出提示。
+
+先点击回车，进入 **协议部分** ，你需要手动输入 `y` 然后回车。
+
+接下来，你需要在选择源时选择 **gitee** 。（如果提示是：是否从 gitee 获取相关文件? /[Y//n/]  则回车开始安装，反之输入一个字母 **n** 再回车）
 
 之后没有问题会进入主界面。
 
@@ -170,7 +176,7 @@ proot-distro install debian
 
 > [!NOTE] 命令都加上了加速站，如有介意者自行删除使用官方源。
 
- - `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺。
+ - `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺，且未适配手机界面。
  
  - `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
  

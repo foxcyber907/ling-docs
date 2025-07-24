@@ -62,8 +62,9 @@ export default withMermaid(
             text: '额外功能',
             collapsed: false,
             items: [
-              { text: 'RGA 系统', link: '/manual/expand/rga' },
-              { text: '语音生成', link: '/manual/expand/vits' }
+              { text: 'RAG 系统', link: '/manual/expand/rag' },
+              { text: '语音生成', link: '/manual/expand/voice' },
+              { text: '视觉功能', link: '/manual/expand/vision' }
             ]
           },
         ],

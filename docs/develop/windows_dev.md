@@ -151,15 +151,18 @@ LingChat 的开发版更新非常快，当你想要体验最新的功能或修�
 ## 三、常见问题 (FAQ)
 
 - **Q: 输入 `git` 或 `python` 命令时，提示“不是内部或外部命令...”？**
-    A: 这说明 Git 或 Python 没有被正确安装，或者安装时忘记勾选 "Add to PATH"。请回到【准备工作】章节，卸载后重新安装，**务必记得勾选 "Add to PATH" 选项**。
+
+   A: 这说明 Git 或 Python 没有被正确安装，或者安装时忘记勾选 "Add to PATH"。请回到【准备工作】章节，卸载后重新安装，**务必记得勾选 "Add to PATH" 选项**。
 
 - **Q: 运行 `python main.py` 时报错 `ModuleNotFoundError: No module named 'xxxx'`？**
-    A: 这个错误说明缺少某个库。通常有两个原因：
+
+   A: 这个错误说明缺少某个库。通常有两个原因：
     1. 你忘记激活虚拟环境了。请检查终端提示符前面是否有 `(venv)` 字样，如果没有，请执行 `.\venv\Scripts\activate`。
     2. 你忘记安装依赖了，或者更新代码后没有同步更新依赖。请在激活虚拟环境后，执行 `pip install -r requirements.txt`。
 
 - **Q: `git pull` 更新代码时提示错误或冲突 (conflict) 怎么办？**
-    A: 作为测试者，你本地的代码一般不需要修改。如果遇到冲突，最简单的办法是放弃本地的所有改动，强制和服务器保持一致。在终端执行以下命令：
+
+  A: 作为测试者，你本地的代码一般不需要修改。如果遇到冲突，最简单的办法是放弃本地的所有改动，强制和服务器保持一致。在终端执行以下命令：
 
     ```powershell
     git reset --hard origin/develop

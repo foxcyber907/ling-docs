@@ -58,25 +58,28 @@ export default withMermaid(
                 { text: '从源码构建', link: '/manual/deployment/source_deploy' },
             ]
           },
-          // {
-          //   text: '额外功能',
-          //   collapsed: false,
-          //   items: [
-          //     { text: 'RGA', link: '/manual/deployment/win_deploy' },
-          //     { text: '语音生成', link: '/manual/deployment/android_deploy' }
-          //   ]
-          // },
+          {
+            text: '额外功能',
+            collapsed: false,
+            items: [
+              { text: 'RGA 系统', link: '/manual/expand/rga' },
+              { text: '语音生成', link: '/manual/expand/vits' }
+            ]
+          },
         ],
         '/faq/': [
+            { text: '首页', link: '/faq/' },
           {
             text: '常见错误',
             collapsed: false,
             items: [
-              { text: '代码报错', link: '/faq/coding/' },
-              { text: '截图错误', link: '/faq/screen/' },
-              {text: '联系与支持', link: '/faq/contact'}
+              { text: 'LingChat 排障速查', link: '/faq/tech/error' },
+              { text: '界面与启动排障', link: '/faq/ui/' },
+                { text: '安卓部署排障', link: '/faq/tech/android' },
+
             ]
-          }
+          },
+            {text: '联系与支持', link: '/faq/support'}
         ],
         '/develop/': [
           {

@@ -4,7 +4,11 @@
 
 ## 目录
 
-- [代码报错](/faq/coding/)
-- [截图报错](/faq/screen/)
+- [🚀 LingChat 排障速查](/faq/tech/error.md)
+- [📱安卓部署排障](/faq/tech/android.md)
+- [🔳界面与启动排障](/faq/ui/index.md)
+- [💬联系与支持](/faq/support.md)
+
+请根据实际问题选择对应板块查阅。
 
 文档更新可能不及时，如需更新联系管理员！（备注：wiki更新）

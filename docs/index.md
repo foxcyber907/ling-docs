@@ -21,7 +21,7 @@ hero:
       link: /develop/
 
 features:
-- icon: 💾  
+- icon: 🔍  
   title: 永久记忆  
   details: 内嵌RAG技术，实现信息持久存储。  
 

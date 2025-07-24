@@ -22,4 +22,3 @@
 - [Windows 教程](/manual/deployment/win_deploy)
 - [Android 教程](/manual/deployment/android_deploy)
 - [Linux 教程](/manual/deployment/linux_deploy)
-- [从源码构建](/manual/deployment/source_deploy)

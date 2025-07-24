@@ -108,7 +108,7 @@ graph LR
 ```
 
 - 项目采用自训练模型，通过 torch 库识别 AI 当前情绪，实现立绘自动切换。
-- 集成 RAG 向量库，实现永久记忆系统：[lingchat简易工程图.docx](../../lingchat%E7%AE%80%E6%98%93%E5%B7%A5%E7%A8%8B%E5%9B%BE.docx)
+- 集成 RAG 向量库，实现永久记忆系统：
   - 启用 RAG 后，对话内容以 JSON 格式存储于 `data/rag_chat_history/`。
   - 语义向量化结果缓存在 `data/chroma_db_store/`。注意：缓存不支持自动删除，如需手动修改或清理 `rag_chat_history/`，请同时删除整个 `chroma_db_store/` 文件夹以保证记忆库同步。
 - 计算资源需求较低，仅需 torch-cpu，普通 4 代 i3 以上电脑即可流畅运行

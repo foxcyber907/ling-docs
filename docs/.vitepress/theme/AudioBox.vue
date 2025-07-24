@@ -71,27 +71,32 @@ function toggle() {
   playing.value = !playing.value
 }
 function onLoaded() {
-  duration.value = audio.value!.duration
+  if (!audio.value) return
+  duration.value = audio.value.duration
 }
 function onTimeupdate() {
-  current.value = audio.value!.currentTime
+  if (!audio.value) return
+  current.value = audio.value.currentTime
 }
 const percent = computed(() => (current.value / duration.value || 0) * 100)
 
 function seek(e: MouseEvent | TouchEvent) {
+  if (!audio.value) return
   const el = e.currentTarget as HTMLElement
   const rect = el.getBoundingClientRect()
   const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
   const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width))
-  audio.value!.currentTime = ratio * duration.value
+  audio.value.currentTime = ratio * duration.value
 }
 function startDrag(e: MouseEvent | TouchEvent) {
+  if (!audio.value) return
   const el = e.currentTarget as HTMLElement
   const move = (ev: MouseEvent | TouchEvent) => {
+    if (!audio.value) return
     const rect = el.getBoundingClientRect()
     const clientX = 'touches' in ev ? ev.touches[0].clientX : ev.clientX
     const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width))
-    audio.value!.currentTime = ratio * duration.value
+    audio.value.currentTime = ratio * duration.value
   }
   const up = () => {
     document.removeEventListener('mousemove', move)

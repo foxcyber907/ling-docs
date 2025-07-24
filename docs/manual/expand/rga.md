@@ -42,6 +42,9 @@ RAG_PROMPT_SUFFIX=""                   # RAG后缀提示（可选）
 RAG 系统需要安装额外的 Python 依赖：
 
 ```bash
+# 使用 `uv` 安装
+# uv pip install sentence-transformers chromadb torch
+# 使用 `pip` 安装
 pip install sentence-transformers chromadb torch
 ```
 

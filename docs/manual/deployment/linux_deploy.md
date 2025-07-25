@@ -233,7 +233,7 @@ git pull
 
 | 命令                   | 用途                              |
 |----------------------|---------------------------------|
-| `screen -S lingchat` | 创建一个名为lingchat的screen会话运行运行LingChat程序   |
+| `screen -S lingchat` | 创建一个名为lingchat的screen会话运行LingChat程序   |
 | `Ctrl+a d`           | 退出当前screen会话(程序继续在后台运行)         |
 | `screen -r lingchat` | 重新连接到mmc会话                      |
 | `screen -ls`         | 查看所有screen会话列表                  |

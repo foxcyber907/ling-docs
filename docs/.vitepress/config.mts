@@ -45,7 +45,8 @@ export default withMermaid(
           {
             text: '用户手册',
             items: [
-              { text: '介绍', link: '/manual/' }
+              { text: '介绍', link: '/manual/' },
+                { text: '在线体验', link: 'http://lingchat.top/' }
             ]
           },
           {

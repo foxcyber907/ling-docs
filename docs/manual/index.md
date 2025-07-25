@@ -1,3 +1,9 @@
+---
+prev: false
+next: false
+lastUpdated: false
+---
+
 # 📄 LingChat 用户手册
 
 ## 前言

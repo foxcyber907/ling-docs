@@ -33,6 +33,12 @@ lastUpdated: false
 
 来选择你需要的内容查看吧
 
+基础部署教程：
 - [Windows 教程](/manual/deployment/win_deploy)
 - [Android 教程](/manual/deployment/android_deploy)
 - [Linux 教程](/manual/deployment/linux_deploy)
+
+LingChat还有很多附加的强力功能！你可以查看额外功能了解与启用：
+- [RAG 功能](/manual/expand/rag)：这是 LingChat 能够实现无限记忆的秘诀
+- [语音生成](/manual/expand/voice)：它可以给人物生成逼真的语音
+- [视觉功能](/manual/expand/vision)：这可以让人物看到你的桌面

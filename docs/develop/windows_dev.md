@@ -1,3 +1,7 @@
+---
+outline:
+  level: [2, 3]
+---
 # LingChat 开发版 Windows 环境配置与使用指南
 
 LingChat 几乎每天都在更新，但是很长时间才会发布一个 release 版本。如果你想抢先使用新功能，或者想为 LingChat 项目做贡献，但是自己不会写代码，我们也欢迎你体验最新的开发版并及时向我们汇报 Bug。
@@ -5,8 +9,6 @@ LingChat 几乎每天都在更新，但是很长时间才会发布一个 release
 本篇文档将手把手教你如何在 Windows 电脑上，从零开始配置环境，运行 LingChat 最新的开发版代码。即使你完全不懂编程。
 
 欢迎你，勇于探索的测试者！
-
-![c5845cf9148b2620b2740c40d73cc8ab](https://github.com/user-attachments/assets/2815cca5-e037-477e-8d18-c1eb385c5deb)
 
 ## 准备工作：安装必备工具
 

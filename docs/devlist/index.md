@@ -9,8 +9,7 @@ sidebar: false
 <div class="team-container" style="display: flex; flex-direction: column; gap: 2rem; max-width: 1400px; margin: 0 auto; padding: 0 1rem;">
 
 <div class="team-card" style="background: var(--vp-c-bg); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--vp-c-divider); display: flex; flex-direction: row; align-items: center; gap: 1.5rem;">
-  <img src="https://avatars.githubusercontent.com/u/85441945" alt="钦灵
-" style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--vp-c-text-1); flex-shrink: 0;">
+  <img src="https://avatars.githubusercontent.com/u/85441945" alt="钦灵" style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--vp-c-text-1); flex-shrink: 0;">
   <div style="flex: 1;">
     <h3 style="color: var(--vp-c-text-1); margin: 0 0 0.5rem 0;">钦灵
 </h3>

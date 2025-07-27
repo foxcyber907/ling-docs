@@ -11,8 +11,7 @@ sidebar: false
 <div class="team-card" style="background: var(--vp-c-bg); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--vp-c-divider); display: flex; flex-direction: row; align-items: center; gap: 1.5rem;">
   <img src="https://avatars.githubusercontent.com/u/85441945" alt="钦灵" style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--vp-c-text-1); flex-shrink: 0;">
   <div style="flex: 1;">
-    <h3 style="color: var(--vp-c-text-1); margin: 0 0 0.5rem 0;">钦灵
-</h3>
+    <h3 style="color: var(--vp-c-text-1); margin: 0 0 0.5rem 0;">钦灵</h3>
     <p style="color: var(--vp-c-text-2); font-weight: 600; margin: 0 0 1rem 0;">项目负责人</p>
     <div style="width: 40px; height: 2px; background-color: var(--vp-c-brand); margin: 0 0 1rem 0;"></div>
     <p style="color: var(--vp-c-text-2); font-size: 0.9rem; line-height: 1.5; margin: 0;">开发群友性功能

@@ -32,6 +32,7 @@ export default withMermaid(
         { text: '用户手册', link: '/manual/' },
         { text: '开发文档', link: '/develop/' },
         { text: '常见问题', link: '/faq/' },
+        { text: '开发团队', link: '/devlist/' },
         {
           text: '官方群聊', items: [
             { text: 'QQ安装答疑群', link: 'https://qm.qq.com/q/GTaZGFXqIQ' },

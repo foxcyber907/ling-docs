@@ -43,9 +43,9 @@ sidebar: false
   <img src="https://avatars.githubusercontent.com/u/141255649" alt="影空" style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--vp-c-text-1); flex-shrink: 0;">
   <div style="flex: 1;">
     <h3 style="color: var(--vp-c-text-1); margin: 0 0 0.5rem 0;">影空</h3>
-    <p style="color: var(--vp-c-text-2); font-weight: 600; margin: 0 0 1rem 0;">写文档，写后端，写bug，修bug，修灵灵</p>
+    <p style="color: var(--vp-c-text-2); font-weight: 600; margin: 0 0 1rem 0;">文档编写和修复Bug</p>
     <div style="width: 40px; height: 2px; background-color: var(--vp-c-brand); margin: 0 0 1rem 0;"></div>
-    <p style="color: var(--vp-c-text-2); font-size: 0.9rem; line-height: 1.5; margin: 0;">只想摸鱼</p>
+    <p style="color: var(--vp-c-text-2); font-size: 0.9rem; line-height: 1.5; margin: 0;">只想摸鱼的废柴一个</p>
   </div>
 </div>
 

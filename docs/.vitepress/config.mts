@@ -20,6 +20,14 @@ export default withMermaid(
     },
 
     themeConfig: {
+      themeConfig: {
+        darkModeSwitch: true,
+        // 初始主题设置为深色
+        colorMode: {
+          default: 'dark',
+          respectPrefersColorScheme: false
+        }
+      },
       editLink: {
         pattern: 'https://github.com/foxcyber907/ling-docs/edit/main/docs/:path',
         text: '在 GitHub 编辑此页'
@@ -100,12 +108,24 @@ export default withMermaid(
       socialLinks: [
         { icon: 'github', link: 'https://github.com/SlimeBoyOwO/LingChat/' }
       ],
-          lastUpdated: {
+      footer: {
+        message: 'Made with ❤️ by LingChat Team',
+        copyright: 'Copyright © 2025 LingChat'
+      },
+      lastUpdated: {
         text: "最后更新",
         formatOptions: {
           dateStyle: "short",
           timeStyle: "short",
         },
+      },
+      outline: {
+        level: 'deep',
+        label: '本页目录'
+      },
+      docFooter: {
+        prev: '上一页',
+        next: '下一页'
       },
     }
   })

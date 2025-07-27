@@ -93,17 +93,27 @@
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
+    135deg,
+    #ff6ec7 20%,
+    #7873f5 50%,
+    #41d1ff 80%
   );
+  --vp-home-hero-name-font-size: clamp(2rem, 5vw, 3.5rem);
+  --vp-home-hero-name-text-shadow: 0 0 10px rgba(189, 52, 254, 0.3), 0 0 20px rgba(65, 209, 255, 0.2);
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #ff6ec7 30%,
+    #7873f5 50%,
+    #41d1ff 70%
   );
   --vp-home-hero-image-filter: blur(44px);
+}
+
+/* 添加两行占位高度控制 */
+.hero .tagline {
+  min-height: 2em; /* 强制两行文本高度 */
+  visibility: hidden; /* 隐藏实际内容 */
 }
 
 @media (min-width: 640px) {

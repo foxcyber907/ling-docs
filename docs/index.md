@@ -3,9 +3,12 @@
 layout: home
 
 hero:
-  name: "LingChat Docs"
-  text: 🐈✨ LingChat - 灵动の人工智能聊天陪伴助手
-  tagline: 一个能记住你、懂你情绪、用声音和画面陪你谈心的高自由度虚拟恋人系统
+  name: "LingChat"
+  text: 灵动のAI聊天陪伴助手
+  tagline: "       
+            
+     
+            "  # 保留文本以便CSS生效
   image:
     src: /avatars/LingChat.png
     alt: LingChat

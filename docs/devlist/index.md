@@ -86,7 +86,7 @@ sidebar: false
   .team-card p {
     color: var(--vp-c-text-2);
   }
-  .team-card div[style*="background-color:"] {
+  .team-card .divider {
     background-color: var(--vp-c-brand) !important;
   }
   h1 {

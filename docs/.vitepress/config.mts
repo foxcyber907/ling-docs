@@ -1,14 +1,50 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { GitChangelog, GitChangelogMarkdownSection } from '@nolebase/vitepress-plugin-git-changelog/vite'
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
     title: "LingChat Docs",
     description: "LingChat的官方文档",
+    lang: 'zh-CN',
     head: [
       ['link', { rel: 'icon', href: '/avatars/LingChat.png' }]
     ],
+
+    // Vite 插件配置
+    vite: {
+      plugins: [
+        GitChangelog({
+          // 配置选项
+          repoURL: () => 'https://github.com/foxcyber907/ling-docs',
+          maxGitLogCount: 5000,
+          includeDirs: ['docs'],
+          // 可选：自定义提交信息格式
+          mapAuthors: [
+            {
+              name: 'foxcyber907',
+              username: 'foxcyber907',
+              mapByEmailAliases: ['foxcyber907@users.noreply.github.com']
+            }
+          ]
+        }),
+        GitChangelogMarkdownSection({
+          // 禁用 doc-after 功能
+          sections: {
+            disableChangelog: true,
+            disableContributors: true,
+          }
+        })
+      ]
+    },
+
+    // 将 markdown 配置移到这里
+    markdown: {
+      config: (md) => {
+        // Mermaid 会通过 withMermaid 自动配置
+      }
+    },
 
     // Mermaid 配置
     mermaid: {

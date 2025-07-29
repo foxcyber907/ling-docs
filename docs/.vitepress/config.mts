@@ -20,19 +20,14 @@ export default withMermaid(
           repoURL: () => 'https://github.com/foxcyber907/ling-docs',
           maxGitLogCount: 5000,
           includeDirs: ['docs'],
-          // 可选：自定义提交信息格式
-          mapAuthors: [
-            {
-              name: 'foxcyber907',
-              username: 'foxcyber907',
-              mapByEmailAliases: ['foxcyber907@users.noreply.github.com']
-            }
-          ]
+          enableAuthorAvatars: true,
+          enableCommitHashLink: true,
+
         }),
         GitChangelogMarkdownSection({
           sections: {
             disableChangelog: false,
-            disableContributors: true,
+            disableContributors: false,
           }
         })
       ]

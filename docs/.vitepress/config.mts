@@ -30,9 +30,8 @@ export default withMermaid(
           ]
         }),
         GitChangelogMarkdownSection({
-          // 禁用 doc-after 功能
           sections: {
-            disableChangelog: true,
+            disableChangelog: false,
             disableContributors: true,
           }
         })

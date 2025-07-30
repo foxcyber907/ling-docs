@@ -14,13 +14,13 @@ RAG 系统会自动保存对话历史，并在用户提问时：
 
 默认情况下，RAG 系统处于禁用状态。若要启用，请在`.env`文件中添加以下配置：
 
-```
+```txt
 USE_RAG=true
 ```
 
 完整的配置参数包括：
 
-```
+```txt
 # RAG系统基本配置
 USE_RAG=true                           # 是否启用RAG系统，设置为true或false
 RAG_HISTORY_PATH=rag_chat_history      # RAG历史记录存储路径
@@ -48,7 +48,7 @@ RAG 系统需要安装额外的 Python 依赖：
 pip install sentence-transformers chromadb torch
 ```
 
-这些依赖已添加到项目的`requirements.txt`中，但被标记为可选。
+这些依赖已添加到项目的`requirements.txt`中，且默认安装。
 
 ## 工作原理
 
@@ -88,7 +88,7 @@ RAG 系统会输出详细的日志，包括：
 - 检索性能指标
 - 找到的相关上下文信息
 
-可以通过设置`DEBUG_MODE=true`来查看更详细的调试信息。
+可以通过设置`LOG_LEVEL=DEBUG`来查看更详细的调试信息。
 
 ## 性能考虑
 

@@ -11,6 +11,10 @@ outline:
 本教程推荐使用 [uv](https://docs.astral.sh/uv/) 作为 Python 包管理器，它提供了更快的包安装速度和更好的依赖管理体验。当然，传统的 pip 和 conda 方式依然可用。
 :::
 
+::: info
+我们建议使用 mamba 代替 conda ，它与 conda 使用方式几乎相同，并在处理依赖上优于 conda。
+:::
+
 ## 一、克隆LingChat，获取必要的文件
 
 通过 git clone 将 [LingChat repo](https://github.com/SlimeBoyOwO/LingChat/) clone 到本地，再进入文件夹。
@@ -77,12 +81,14 @@ python3 -m venv LingChat/venv      # 创建虚拟环境
 source LingChat/venv/bin/activate  # 激活环境
 ```
 
-#### 方法2：使用conda
+#### 方法2：使用conda/mamba
 
 ```bash
-conda create -n LingChatEnv python=3.12
-conda activate LingChatEnv
+mamba create -f requirements.txt
+mamba activate LingChat
 ```
+
+这可以 **一步到位** 安装完环境，你可以跳转到[配置 env ](/manual/deployment/linux_deploy#env_file)继续，或者自己创建环境安装依赖。
 
 ## 三、依赖安装
 
@@ -104,11 +110,10 @@ uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --u
 
 ```bash
 cd LingChat
-pip install uv -i https://mirrors.aliyun.com/pypi/simple
-uv pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
+pip install -i https://mirrors.aliyun.com/pypi/simple -r requirements.txt --upgrade
 ```
 
-### 配置 `.env` 文件
+### 配置 `.env` 文件 {#env_file}
 
 ```bash
 mv .env.example .env
@@ -136,7 +141,7 @@ wget https://www.modelscope.cn/models/kxdw2580/LingChat-emotion-model-18emo/reso
 
 ### RAG 模型
 
-先激活虚拟环境，运行以下命令：
+先激活虚拟环境，然后运行以下命令：
 
 ```bash
 python3 backend/core/memory_rag/downloading.py
@@ -170,7 +175,7 @@ uv run python3 backend/windows_main.py
 #### 前台运行
 
 ```bash
-python3 backend/windows_main.py
+python backend/windows_main.py
 ```
 
 #### 后台运行
@@ -182,7 +187,7 @@ python3 backend/windows_main.py
 screen -S lingchat
 source ./venv/bin/activate  # 激活环境
 # 运行lingchat
-python3 backend/windows_main.py
+python backend/windows_main.py
 ```
 
 > 按`Ctrl+a`, 再按`d`, 即可退出screen, 此时,程序仍在后台执行;  
@@ -219,15 +224,15 @@ git pull
 |------|--------------|
 | `uv venv` | 创建Python虚拟环境 |
 | `uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple --upgrade` | 安装依赖包        |
-| `uv run python3 backend/windows_main.py` | 运行LingChat程序 |
+| `uv run python backend/windows_main.py` | 运行LingChat程序 |
 
 ### 传统方式命令
 
 | 命令                           | 用途 |
 |------------------------------|------|
 | `source ./venv/bin/activate` | 激活Python虚拟环境（使用venv） |
-| `conda activate LingChatEnv` | 激活Python虚拟环境（使用conda） |
-| `python3 backend/windows_main.py`             | 运行LingChat程序 |
+| `conda activate LingChat` | 激活Python虚拟环境（使用conda） |
+| `python backend/windows_main.py`             | 运行LingChat程序 |
 
 ### 后台运行相关
 

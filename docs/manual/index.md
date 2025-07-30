@@ -29,16 +29,26 @@ lastUpdated: false
 
 ## 正文
 
-在这个页面中，你将了解到如何部署，配置和使用Lingchat
+在以下页面中，你将更加了解 Lingchat，来选择你需要的内容查看吧！
 
-来选择你需要的内容查看吧
+### 基础部署教程
 
-基础部署教程：
+这部分提供了 LingChat 的基础部署教程，包括如何安装、启动、配置、使用等。
+
 - [Windows 教程](/manual/deployment/win_deploy)
 - [Android 教程](/manual/deployment/android_deploy)
 - [Linux 教程](/manual/deployment/linux_deploy)
 
+### 附加功能
+
 LingChat还有很多附加的强力功能！你可以查看额外功能了解与启用：
+
 - [RAG 功能](/manual/expand/rag)：这是 LingChat 能够实现无限记忆的秘诀
-- [语音生成](/manual/expand/voice)：它可以给人物生成逼真的语音
+- [语音生成](/manual/expand/voice)：这可以给人物生成逼真的语音
 - [视觉功能](/manual/expand/vision)：这可以让人物看到你的桌面
+
+## 附属项目
+
+LingChat 不止这些！你还可以查看以下附属项目：
+
+- [Ling-Pet](https://github.com/kono-dada/Ling-Pet)：由 dada 大佬开发的桌宠项目

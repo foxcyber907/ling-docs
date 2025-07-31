@@ -1,4 +1,5 @@
 ---
+title: LingChat Windows 部署教程
 outline:
   level: [2, 3]
 ---

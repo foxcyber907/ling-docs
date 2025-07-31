@@ -1,4 +1,5 @@
 ---
+title: LingChat Linux 部署教程
 outline:
   level: [2, 4]
 ---
@@ -88,7 +89,7 @@ mamba create -f requirements.txt
 mamba activate LingChat
 ```
 
-这可以 **一步到位** 安装完环境，你可以跳转到[配置 env ](/manual/deployment/linux_deploy#env_file)继续，或者自己创建环境安装依赖。
+这可以 **一步到位** 安装完环境，你可以跳转到[配置 env](/manual/deployment/linux_deploy#env_file)继续，或者自己创建环境安装依赖。
 
 ## 三、依赖安装
 

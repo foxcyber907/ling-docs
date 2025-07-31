@@ -1,4 +1,5 @@
 ---
+title: LingChat AI-Galgame 故事创作指南
 outline:
   level: [2, 4]   # 仅该文件显示 H2、H3
 ---

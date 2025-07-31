@@ -1,4 +1,5 @@
 ---
+title: LingChat 文档用户手册引导
 prev: false
 next: false
 lastUpdated: false

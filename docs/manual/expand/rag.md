@@ -1,3 +1,7 @@
+---
+title: LingChat RAG 系统使用说明
+---
+
 # 🔍 RAG 系统使用说明
 
 本项目集成了基于检索增强生成（Retrieval-Augmented Generation，RAG）的上下文增强系统，可以显著提升 AI 对话的连贯性和上下文理解能力。

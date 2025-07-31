@@ -1,4 +1,5 @@
 ---
+title: LingChat Android 部署指南
 outline:
   level: [2, 5]
 ---
@@ -7,6 +8,7 @@ outline:
 
 ::: info
 本教程提供两种部署方式，请按需使用哦=w=
+
 1. [手机+电脑的配合使用](/manual/deployment/android_deploy#phone_win_deploy)
    - 适合大多数用户，使用手机和电脑配合部署。
    - 使用手机浏览器访问电脑上的 LingChat，并在电脑上运行后端服务。
@@ -22,6 +24,7 @@ outline:
 
 
 ### 具体操作
+
 > 请确保电脑和手机在 **同一网络** 下，否则无法使用。
 
 > 如有需要可参考 [Windows 部署](/manual/deployment/win_deploy) 教程。
@@ -33,7 +36,7 @@ outline:
 
 然后在电脑上打开 LingChat，观察命令提示符（黑窗口）中是否有这一行字：
 
-```
+```txt
 INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 ```
 
@@ -46,11 +49,12 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 ## 二、纯手机的使用 {#pure_phone_deploy}
 
 ### 安装 ZeroTermux 环境
+
 前往 [ZeroTermux-Github](https://github.com/hanxinhao000/ZeroTermux/releases/tag/release) 下载ZeroTermux安装包并安装。
 
 如果下载太慢或无法下载，可尝试使用 [Github镜像源](https://ghfast.top/github.com/hanxinhao000/ZeroTermux/releases/download/release/ZeroTermux-0.118.1.43.apk) 下载并安装。
 
-**注意：安装其他版本或者选择Termux会导致以下教程出现部分的不适用，不建议这样做**
+注意：**安装其他版本或者选择Termux会导致以下教程出现部分的不适用，不建议这样做**
 
 进入ZeroTermux软件界面，提示完整阅读协议时记得要把文字内容拉到最底下。
 
@@ -107,7 +111,8 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 ##### 下载容器
 
 在 **ZeroTermux 的终端** 复制执行以下命令，这将下载本人打包好的容器：
-```
+
+```bash
 mkdir ./storage/downloads/backup
 mkdir ./storage/downloads/backup/containers
 mkdir ./storage/downloads/backup/containers/proot
@@ -163,6 +168,7 @@ proot-distro install debian
 ```
 
 > [!NOTE] 这样安装可能会有点慢或干脆无法下载（github的锅）。此时运行以下命令安装debian：
+>
 > ```bash
 > pkg install wget -y
 > wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/proot-distro-debian-bookwarm-0721.tar.xz
@@ -176,12 +182,12 @@ proot-distro install debian
 
 > [!NOTE] 命令都加上了加速站，如有介意者自行删除使用官方源。
 
- - `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺，且未适配手机界面。
- 
- - `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
- 
- - `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试，但未经官方审查。
- 
+- `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺，且未适配手机界面。
+
+- `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
+
+- `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试，但未经官方审查。
+
 根据你自己需求选择一条命令运行。
 
 克隆完毕后，运行以下命令 **安装 python 及其依赖** ：
@@ -340,4 +346,3 @@ cd
 ### 更新 LingChat
 
 输入 `bash update.sh` 即可自动更新。
-

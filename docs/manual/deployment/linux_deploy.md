@@ -85,7 +85,7 @@ source LingChat/venv/bin/activate  # 激活环境
 #### 方法2：使用conda/mamba
 
 ```bash
-mamba create -f requirements.txt
+mamba create -f environment.yaml
 mamba activate LingChat
 ```
 

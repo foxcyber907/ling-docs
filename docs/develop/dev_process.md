@@ -1,5 +1,6 @@
 ---
-title: LingChat 开发流程
+title: 开发流程
+description: 了解LingChat的开发流程
 ---
 
 # 开发流程

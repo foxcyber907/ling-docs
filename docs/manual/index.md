@@ -25,7 +25,7 @@ lastUpdated: false
 - 治学守时，寒暑无辍，是为律。
 - 灵门🙏🏻
 
-<AudioBox src="/maxim.flac">
+<AudioBox src="/maxim.mp3">
   灵门箴言
 </AudioBox>
 

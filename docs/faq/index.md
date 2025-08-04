@@ -1,5 +1,6 @@
 ---
-title: LingChat 常见问题 (FAQ)
+title: 常见问题 (FAQ)
+description: 解决LingChat常见问题，包括技术问题、界面问题和部署问题，并提供详细的解答和解决方案。
 ---
 
 # ❓ 常见问题 (FAQ)

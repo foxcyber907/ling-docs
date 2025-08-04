@@ -1,5 +1,6 @@
 ---
-title: LingChat Linux 部署教程
+title: Linux 部署教程
+description: 学习如何在Linux系统上部署LingChat，包括环境配置、依赖安装和部署步骤指南。
 outline:
   level: [2, 4]
 ---

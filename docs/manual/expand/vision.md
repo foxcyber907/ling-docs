@@ -1,5 +1,6 @@
 ---
-title: LingChat 视觉感知功能使用说明
+title: 视觉感知功能使用说明
+description: 学习如何配置和使用 LingChat 的视觉感知功能，让AI能够观察和描述你的桌面内容。
 ---
 
 # 🌈视觉感知功能使用说明

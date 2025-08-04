@@ -1,5 +1,6 @@
 ---
-title: LingChat RAG 系统使用说明
+title: RAG 系统使用说明
+description: 了解LingChat的RAG系统，包括功能概述、启用配置、依赖安装和使用方法，提升AI对话的连贯性。
 ---
 
 # 🔍 RAG 系统使用说明

@@ -1,5 +1,6 @@
 ---
-title: LingChat 开发指南
+title: 开发指南
+description: 介绍LingChat开发的相关事宜，包括流程，项目结构，环境搭建，剧本编写等
 ---
 
 # 开发指南

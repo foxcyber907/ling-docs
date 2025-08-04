@@ -1,5 +1,6 @@
 ---
-title: LingChat 文档用户手册引导
+title: 用户手册引导
+description: LingChat用户手册引导部分，包含基础部署教程和附加功能指南，帮助您快速上手使用LingChat。
 prev: false
 next: false
 lastUpdated: false

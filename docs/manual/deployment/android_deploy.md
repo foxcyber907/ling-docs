@@ -1,5 +1,6 @@
 ---
-title: LingChat Android 部署指南
+title: Android 部署指南
+description: 详细指导如何在Android设备上部署LingChat，包括手机与电脑配合使用和纯手机部署两种方案。
 outline:
   level: [2, 5]
 ---

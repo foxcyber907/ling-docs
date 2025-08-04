@@ -1,5 +1,6 @@
 ---
-title: LingChat 语音功能使用说明
+title: 语音功能使用说明
+description: 了解如何配置和使用LingChat的语音生成功能，包括 VITS 和 Style-Bert-VITS2 两种语音合成方案。
 ---
 
 #  🎙️ 语音功能使用说明

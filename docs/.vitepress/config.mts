@@ -9,7 +9,8 @@ export default withMermaid(
     description: "LingChat的官方文档",
     lang: 'zh-CN',
     head: [
-      ['link', { rel: 'icon', href: '/avatars/LingChat.png' }]
+      ['link', { rel: 'icon', href: '/avatars/LingChat.png' }],
+      ['meta', { name: 'description', content: 'LingChat是一个高自由度的虚拟恋人系统，具备永久记忆、情绪识别、语音合成等功能。在这里你可以找到详细的用户手册、部署指南和开发文档。' }]
     ],
 
     // Vite 插件配置

@@ -1,7 +1,8 @@
 ---
-title: LingChat AI-Galgame 故事创作指南
+title: AI-Galgame 故事创作指南
+description: 学习如何使用LingChat的剧情脚本系统，创作由AI驱动的互动Galgame故事，包括角色设定和剧情单元设计。
 outline:
-  level: [2, 4]   # 仅该文件显示 H2、H3
+  level: [2, 4]
 ---
 
 # LingChat AI-Galgame 剧情创作指南

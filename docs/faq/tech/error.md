@@ -1,5 +1,6 @@
 ---
-title: LingChat 排障速查
+title: 排障速查
+description: 解决 LingChat 常见技术问题，包括TTS服务问题、大模型API请求错误和端口占用问题。
 ---
 
 # 🚀 LingChat 排障速查

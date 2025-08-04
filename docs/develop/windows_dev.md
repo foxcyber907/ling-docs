@@ -1,5 +1,6 @@
 ---
-title: LingChat 开发版 Windows 环境配置与使用指南
+title: 开发版 Windows 环境配置与使用指南
+description: 详细指导如何在Windows环境下配置LingChat开发环境，包括Git、Python安装和源代码获取步骤。
 outline:
   level: [2, 3]
 ---

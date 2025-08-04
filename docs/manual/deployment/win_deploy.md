@@ -1,5 +1,6 @@
 ---
-title: LingChat Windows 部署教程
+title: Windows 部署教程
+description: 详细指导如何在Windows系统上部署LingChat，包括软件下载、安装步骤和首次启动配置指南。
 outline:
   level: [2, 3]
 ---

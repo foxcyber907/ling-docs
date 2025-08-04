@@ -1,5 +1,6 @@
 ---
-title: LingChat 项目结构与实现
+title: 项目结构与实现
+description: 面向开发者的部分，了解LingChat的项目结构和实现细节，包括主程序入口各个模块的组织方式。
 ---
 
 # 项目结构与实现

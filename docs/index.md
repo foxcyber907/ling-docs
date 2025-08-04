@@ -1,5 +1,6 @@
 ---
-title: LingChat 文档首页
+title: 文档首页
+description: LingChat是一个能记住你、懂你情绪、用声音和画面陪你谈心的高自由度虚拟恋人系统。在这里你可以找到详细的用户手册、部署指南和开发文档。
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 

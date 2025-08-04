@@ -1,5 +1,6 @@
 ---
-title: LingChat 联系与支持
+title: 联系与支持
+description: 了解如何在使用LingChat出现无法解决的问题时，获得开发者的帮助。
 ---
 
 # 💬联系与支持

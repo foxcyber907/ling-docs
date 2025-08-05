@@ -403,7 +403,7 @@ function goToPage(page) {
   z-index: 0;
 }
 
-/* 猫爪印样式 - 从右下角开始，更大尺寸 */
+/* 猫爪印样式 */
 .paw-print {
   position: absolute;
   opacity: 0.2;
@@ -830,11 +830,11 @@ function goToPage(page) {
 
 @media (max-width: 480px) {
   .team-page-wrapper {
-    padding-top: 90px; /* 小屏幕更多顶部空间 */
+    padding-top: 90px;
   }
 
   .team-content {
-    padding: 1rem 0.75rem; /* 减少左右内边距，增加顶部内边距 */
+    padding: 1rem 0.75rem;
   }
 
   .team-grid {

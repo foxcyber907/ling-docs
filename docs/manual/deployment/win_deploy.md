@@ -16,6 +16,7 @@ outline:
 - 在DeepSeek或者其他大模型网站中，申请自己的API密钥，并且保证有余额供使用
 - [DeepSeek的官方API获取网站](https://platform.deepseek.com/)
 - [硅基流动API获取网站](https://api.siliconflow.com/)
+- [Rinkoai](https://rinkoai.com/)
 
 ## 二、正式开始
 

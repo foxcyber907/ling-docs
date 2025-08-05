@@ -3,7 +3,7 @@
     <div class="team-content">
       <div class="team-grid">
         <div
-          v-for="(member, index) in teamMembers"
+          v-for="(member, index) in paginatedMembers"
           :key="member.name"
           class="team-card-wrapper"
           :style="{ animationDelay: `${index * 0.1 + 0.1}s` }"
@@ -84,12 +84,51 @@
           </a>
         </div>
       </div>
+
+      <!-- 分页控件 -->
+      <div class="pagination-wrapper" v-if="totalPages > 1">
+        <div class="pagination">
+          <button
+            class="pagination-btn"
+            :disabled="currentPage === 1"
+            @click="goToPage(currentPage - 1)"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+            </svg>
+          </button>
+
+          <button
+            v-for="page in visiblePages"
+            :key="page"
+            class="pagination-btn page-number"
+            :class="{ active: page === currentPage }"
+            @click="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+
+          <button
+            class="pagination-btn"
+            :disabled="currentPage === totalPages"
+            @click="goToPage(currentPage + 1)"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="pagination-info">
+          第 {{ currentPage }} 页，共 {{ totalPages }} 页
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const teamMembers = ref([
   {
@@ -133,8 +172,125 @@ const teamMembers = ref([
     description: '云，二次元和ai爱好者',
     avatar: 'https://avatars.githubusercontent.com/u/84253913',
     github: 'https://github.com/LtePrince'
+  },
+  {
+    name: "维克扣扣",
+    role: "服务器开发 / 技术顾问",
+    description: "前面忘了，后面忘了，反正是14岁小萝莉",
+    avatar: "https://avatars.githubusercontent.com/u/54114807",
+    github: "https://github.com/Vickko"
+  },
+  {
+    name: "PL",
+    role: "后端架构师",
+    description: "( -  - )",
+    avatar: "https://avatars.githubusercontent.com/u/2049889",
+    github: "https://github.com/0x00-pl"
+  },
+  {
+    name: "dada",
+    role: "桌宠功能开发",
+    description: "我为什么要介绍自己，这是什么羞耻play",
+    avatar: "https://avatars.githubusercontent.com/u/90194046",
+    github: "https://github.com/kono-dada"
+  },
+  {
+    name: "影",
+    role: "修BUG",
+    description: "不在服务区",
+    avatar: "https://avatars.githubusercontent.com/u/79434860",
+    github: "https://github.com/SymphonyIceAttack"
+  },
+  {
+    name: "uwa",
+    role: "api维护",
+    description: "没点东西，但又想做出点东西的uwa",
+    avatar: "https://avatars.githubusercontent.com/u/198856519",
+    github: "https://github.com/myh1011"
+  },
+  {
+    name: "yukito",
+    role: "UI设计＆开发",
+    description: "时不时冒出来写个UI",
+    avatar: "https://avatars.githubusercontent.com/u/76610895",
+    github: "https://github.com/yukito0209"
+  },
+  {
+    name: "远足",
+    role: "UI设计＆开发",
+    description: "哈基灵艾草",
+    avatar: "https://avatars.githubusercontent.com/u/145168973",
+    github: "https://github.com/523528109"
+  },
+  {
+    name: "喵",
+    role: "前端架构",
+    description: "喵喵喵？",
+    avatar: "https://avatars.githubusercontent.com/u/77714719",
+    github: "https://github.com/a2942"
+  },
+  {
+    name: "元初",
+    role: "vue开发",
+    description: "幻想手搓机娘的摸鱼全栈开发",
+    avatar: "https://avatars.githubusercontent.com/u/99704629",
+    github: "https://github.com/metaone01"
+  },
+  {
+    name: "有梦当燃",
+    role: "前端架构",
+    description: "灵灵的御用杯子",
+    avatar: "https://avatars.githubusercontent.com/u/173782367",
+    github: "https://github.com/Afiredream"
+  },
+  {
+    name: "柏海",
+    role: "UI/剧情设计",
+    description: "负责让项目变得橘里橘气",
+    avatar: "https://avatars.githubusercontent.com/u/224532616",
+    github: "https://github.com/mori-morichan"
+  },
+  {
+    name: "总督",
+    role: "美术资源",
+    description: "桑丘派硬血奥义-La Sangre！！！",
+    avatar: "https://avatars.githubusercontent.com/u/223061577",
+    github: "https://github.com/FinalFlower"
+  },
+  {
+    name: "123",
+    role: "vits训练师",
+    description: "每秒输出最大为2tokens",
+    avatar: "https://avatars.githubusercontent.com/u/85015838",
+    github: "https://github.com/1236850"
   }
 ])
+
+const currentPage = ref(1)
+const itemsPerPage = ref(6)
+
+const paginatedMembers = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value
+  const end = start + itemsPerPage.value
+  return teamMembers.value.slice(start, end)
+})
+
+const totalPages = computed(() => {
+  return Math.ceil(teamMembers.value.length / itemsPerPage.value)
+})
+
+const visiblePages = computed(() => {
+  const pages = []
+  for (let i = 1; i <= totalPages.value; i++) {
+    pages.push(i)
+  }
+  return pages
+})
+
+function goToPage(page) {
+  if (page < 1 || page > totalPages.value) return
+  currentPage.value = page
+}
 </script>
 
 <style scoped>
@@ -558,20 +714,82 @@ const teamMembers = ref([
   transform: scale(1.1) rotate(15deg);
 }
 
+/* 分页控件样式 */
+.pagination-wrapper {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.pagination {
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--vp-c-bg-soft, #f6f6f7);
+  border: 1px solid var(--vp-c-divider, #e2e2e3);
+  border-radius: 50%;
+  color: var(--vp-c-text-3, #959595);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.page-number {
+  width: auto;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+}
+
+.page-number.active {
+  background: linear-gradient(90deg, #1976D2, #42A5F5);
+  color: #ffffff;
+}
+
+.pagination-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2, #476582);
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .team-page-wrapper {
+    padding-top: 90px;
+  }
+
   .team-content {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .team-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding-top: 0.5rem;
   }
 
   .team-card {
     padding: 1rem;
     border-radius: 12px;
+    margin: 0 auto;
+    max-width: 100%;
   }
 
   .card-content {
@@ -612,17 +830,20 @@ const teamMembers = ref([
 
 @media (max-width: 480px) {
   .team-page-wrapper {
-    padding-top: 50px;
+    padding-top: 90px; /* 小屏幕更多顶部空间 */
+  }
+
+  .team-content {
+    padding: 1rem 0.75rem; /* 减少左右内边距，增加顶部内边距 */
   }
 
   .team-grid {
     grid-template-columns: 1fr;
+    padding-top: 1rem; /* 为第一个卡片添加更多空间 */
   }
 
-  .card-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+  .team-card {
+    margin: 0 0.5rem; /* 添加左右边距 */
   }
 
   .member-info {

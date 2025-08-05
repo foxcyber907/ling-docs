@@ -1,6 +1,6 @@
 ---
 title: 开发团队介绍
-description: 了解LingChat开发团队成员，包括项目创始人、核心开发者和贡献者。
+description: 了解LingChat开发团队成员，包括项目创始人、核心开发者和贡献者。以及开发背后不为人知的小彩蛋
 ---
 
 ## 你知道吗（彩蛋，依赖特性运行[雾？]）
@@ -8,5 +8,7 @@ description: 了解LingChat开发团队成员，包括项目创始人、核心�
 - 风雪会爆鸣
 - 用nodejs+html+python导致vic爆鸣
 - 比如上传node_modules导致PL爆鸣
+- 0.3.0版本的项目启动时会有彩蛋，现在没了
+- pl掀桌子般的#161 pr让项目组十分红温，并且影响深远
 
 <TeamPage />

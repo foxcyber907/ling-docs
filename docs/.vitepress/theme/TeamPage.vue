@@ -203,7 +203,7 @@ const teamMembers = ref([
   },
   {
     name: "uwa",
-    role: "api维护",
+    role: "安装包开发者",
     description: "没点东西，但又想做出点东西的uwa",
     avatar: "https://avatars.githubusercontent.com/u/198856519",
     github: "https://github.com/myh1011"

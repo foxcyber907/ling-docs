@@ -111,7 +111,7 @@ python -m venv venv
 3. **安装项目依赖**：LingChat 的运行需要很多第三方库的支持。我们用一条命令就能全部装好。
 
 ```powershell
-pip install -r requirements.txt
+pip install -r pyproject.toml
 ```
 
 这个过程可能会需要几分钟，请耐心等待它下载和安装。
@@ -143,7 +143,8 @@ LingChat 的开发版更新非常快，当你想要体验最新的功能或修�
 3. **更新依赖库（重要）**：有时候，新的代码会需要新的第三方库。所以，拉取代码后最好都执行一次更新依赖的命令。
 
     ```powershell
-    pip install -r requirements.txt
+    pip install -r pyproject.toml
+  
     ```
 
     `pip` 很智能，它只会安装新增或有变动的库，不会重复安装已有的库。

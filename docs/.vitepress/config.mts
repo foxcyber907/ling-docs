@@ -110,6 +110,7 @@ export default withMermaid(
               { text: 'LingChat 排障速查', link: '/faq/tech/error' },
               { text: '界面与启动排障', link: '/faq/ui/' },
               { text: '安卓部署排障', link: '/faq/tech/android' },
+                { text: 'Clone后修复指南', link: '/faq/clone.md' }
 
             ]
           },
@@ -123,7 +124,8 @@ export default withMermaid(
               { text: '开发流程', link: '/develop/dev_process' },
               { text: 'Windows 开发环境搭建', link: '/develop/windows_dev' },
               { text: '项目结构与实现概述', link: '/develop/project_structure' },
-              {text : '剧情创作指南（测试版）',  link: '/develop/story_guide'}
+              {text : '剧情创作指南（测试版）',  link: '/develop/story_guide'},
+                { text: '人物创建指南',link: '/develop/character_guide' },
             ]
           }
         ]

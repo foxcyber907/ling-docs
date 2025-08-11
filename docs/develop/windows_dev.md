@@ -14,7 +14,7 @@ LingChat 几乎每天都在更新，但是很长时间才会发布一个 release
 
 ## 准备工作：安装必备工具
 
-在开始之前，我们需要在你的电脑上安装三个免费的代码开发工具。
+在开始之前，我们需要在你的电脑上安装五个免费的代码开发工具。
 
 ### 1. 安装 Git
 
@@ -23,7 +23,14 @@ Git 是一个代码版本管理工具，我们可以用它轻松地从 GitHub �
 - **下载地址**：[https://git-scm.com/download/win](https://git-scm.com/download/win)
 - **安装方法**：下载后，双击打开安装包。你不需要理解每个选项的含义，**一路点击 "Next"** 使用默认设置完成安装即可。
 
-### 2. 安装 Python
+### 2. 安装 Git lfs
+
+Git LFS 是 Git 的一个扩展，用于管理大型文件，比如图片、视频、音频、源代码等等。
+
+- **下载地址**：[https://git-lfs.com/](https://git-lfs.com/)
+- **安装方法**：下载后，双击打开安装包，一直下一步直到安装结束。然后打开一个命令行，输入 `git lfs install` 。
+
+### 3. 安装 Python
 
 Python 是 LingChat 使用的编程语言。
 
@@ -34,12 +41,26 @@ Python 是 LingChat 使用的编程语言。
     2. **【非常重要！】** 在安装界面的最下方，**务必勾选 "Add Python to PATH"** 选项，然后再点击 "Install Now"。
     3. 等待安装完成即可。
 
-### 3. 安装 VS Code（可选）
+### 4. 安装 uv
+
+uv 是一个由 Ruff 团队开发的、非常快的 Python 包管理器，我们将用它来安装 LingChat 的运行依赖。
+
+- **安装方法**：
+    1. 在 Windows 的开始菜单中，找到并打开 "PowerShell"（一个蓝色背景的窗口）。
+    2. 在 PowerShell 窗口中，复制并粘贴以下命令，然后按回车键执行。
+
+        ```powershell
+        powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+        ```
+
+    3. 安装完成后，关闭 PowerShell 窗口即可。
+
+### 5. 安装 VS Code（可选）
 
 > [!NOTE]
-> 如果只是单纯使用，你可以不安装它。
+> 如果只是单纯使用，你可以不安装它，并跳过所有相关步骤。
 
-VS Code (Visual Studio Code) 是一个强大的代码编辑器，我们将用它来管理和运行 LingChat。
+VS Code (Visual Studio Code) 是最主流的代码编辑器，界面现代，运行速度快，我们将用它来管理和运行 LingChat。
 
 - **下载地址**：[https://code.visualstudio.com/](https://code.visualstudio.com/)
 - **安装方法**：下载后，双击打开安装包。同样，使用默认设置，一路点击 "Next" 完成安装。
@@ -72,97 +93,165 @@ git clone -b develop https://github.com/SlimeBoyOwO/LingChat.git
 
 当你看到命令行提示完成，并且 `MyProjects` 文件夹下出现了一个名为 `LingChat` 的新文件夹时，就说明代码已经成功下载到你的电脑里了！
 
-## 二：使用 VS Code 配置和运行项目
+## 二、使用 VS Code 配置和运行项目
+
+### 2.1 初始化VSCode设置
 
 现在，我们将使用 VS Code 来完成最后的配置和运行。
 
-1. **用 VS Code 打开项目**：
-    - 启动你刚刚安装的 VS Code。
-    - 点击左上角的 "File" -> "Open Folder..." (或者 "文件" -> "打开文件夹...")。
-    - 在弹出的窗口中，选择我们刚刚下载的 `LingChat` 文件夹，然后点击 "选择文件夹"。
+打开你安装好的vs code，如果不习惯英文界面，可以百度：“vscode如何设置中文”，将界面设置为中文。下面我们基于中文界面讲解。
 
-2. **打开 VS Code 的终端**：
-    - 在 VS Code 的顶部菜单栏，点击 "Terminal" -> "New Terminal" (或者 "终端" -> "新建终端")。
-    - VS Code 的下方会弹出一个集成的命令行窗口，我们后续的命令都在这里输入。
+LingChat是一个python项目，所以我们要给VS code安装Python插件。在左侧打开插件栏并搜索python，安装Python和Pylance，然后把软件重启即可。
 
-> [!NOTE]
-> 不使用 VS Code 的话，请打开 `LingChat` 文件夹，并仿照上面打开命令行继续下面的步骤。
+### 2.2 使用VS Code 打开LingChat
 
-### 2.1 虚拟环境的创建与维护
+在VS Code的左上角，找到"文件"选项，然后点击"打开文件夹..."(如果你使用的是英文界面，则是点击"File" -> "Open Folder...")，导航到刚刚下载的 `LingChat` 文件夹，然后点击 "选择文件夹"。现在你就成功的用VS Code打开了LingChat，在这之后，你可以在"文件"选项的“打开最近的文件”来快速找到LingChat。
 
-为了不污染你电脑本身的 Python 环境，我们将为 LingChat 创建一个独立的“虚拟环境”。这就像为这个项目准备了一个专属的、干净的工具箱。
+### 2.3 创建并配置Python运行环境
 
-1. **创建虚拟环境**：在终端里，输入以下命令并按回车。
+现在，我们需要为 LingChat 创建一个隔离的、独立的 Python 运行环境并安装其所需的各种库。
 
-```powershell
-python -m venv venv
-```
+1. **打开终端**: 在 VS Code 的顶部菜单栏中，选择 "终端" -> "新建终端"。这会在 VS Code 的下方打开一个命令行面板。
 
-这个命令会创建一个名为 `venv` 的文件夹，里面存放着这个项目专用的 Python 环境。
+2. **创建虚拟环境**: 在打开的终端中，输入并执行以下命令，来创建一个名为 `venv` 的虚拟环境。
 
-2. **激活虚拟环境**：输入以下命令并按回车，来“进入”这个专属工具箱。
+    ```powershell
+    uv venv venv
+    ```
 
-```powershell
-.\venv\Scripts\activate
-```
+3. **激活虚拟环境**: 继续在终端中执行以下命令来激活刚刚创建的环境。
 
-成功激活后，你会看到命令行提示符的前面出现了 `(venv)` 的字样。这表示你已经处于虚拟环境中。
+    ```powershell
+    .\venv\Scripts\activate
+    ```
 
-3. **安装项目依赖**：LingChat 的运行需要很多第三方库的支持。我们用一条命令就能全部装好。
+    激活成功后，你会看到终端的提示符前面出现了 `(.venv)` 的字样。
 
-```powershell
-pip install -e .
-```
+4. **安装项目依赖**: 项目的依赖项现在记录在 `pyproject.toml` 文件中。使用我们之前安装的 `uv` 工具，执行以下命令来安装所有依赖。
 
-这个过程可能会需要几分钟，请耐心等待它下载和安装。
+    ```powershell
+    uv pip install -r pyproject.toml
+    ```
+
+    这个过程会根据你的网络情况花费几分钟到十几分钟不等，`uv` 的安装速度很快，请耐心等待。
+
+5. **选择解释器**: 按下 `Ctrl+Shift+P` 打开命令面板，输入 `Python: Select Interpreter`，然后选择带有 `('.venv': venv)` 标识的那个 Python 解释器。这会告诉 VS Code 使用我们创建的虚拟环境来运行代码。
+
+6. **运行 LingChat！**：万事俱备！
+
+现在请在根目录新建一个文件，把他命名为.env，把.env.example，复制到.env中并保存。然后点击 VS Code 右上角的 "▶" (运行) 按钮来方便地启动 LingChat。
+
+当然，如果不使用vscode，你也可以双击start.bat，它可以依据你刚刚创建的虚拟环境来启动程序。
+
+如果一切顺利，你应该能看到 LingChat 启动成功。恭喜你，成功运行了最新的开发版！
+
+## 三、获取最新的更新
+
+LingChat 几乎每天都在更新，你可以随时查看并使用最新的更新。
+
+点击左侧的源代码管理按钮进入查看更新界面。点击虚线箭头（同步更改）刷新并拉取近期的更新。
 
 > [!IMPORTANT]
-> 如果出现 ERROR: Could not find a version that satisfies the requirement 等错误，可以关闭VPN重试
+> **重要提示**：作为测试者，我们一般不修改本地代码。如果拉取更新时提示“冲突 (Conflict)”，最简单的解决方法是放弃所有本地修改。可以点击上图中的撤销箭头（放弃所有更改），将所有文件恢复到更新前的状态，然后再点击同步更改按钮拉取最新代码。如果你对某些文件（如人物设定）有自己的修改，这大概率不要紧，不过还是建议备份。
 
-4. **运行 LingChat！**：万事俱备！现在双击start.windows.bat，他可以依据你刚刚创建的虚拟环境来启动程序。
+## 四、纯命令行方式配置与使用 (Windows / Linux)
 
-如果一切顺利，你应该能看到 LingChat 的程序界面弹出来了。恭喜你，成功运行了最新的开发版！
+如果你习惯使用命令行，本章节将指导你如何完全通过命令行来完成所有配置和更新操作。
 
-### 2.2 如何同步最新的更新？
+### 1. 安装核心工具
 
-LingChat 的开发版更新非常快，当你想要体验最新的功能或修复时，只需要几个简单的步骤就可以同步更新。
+请确保你已根据【准备工作】章节安装了 `Git`, `Python` 和 `uv`。
 
-1. **打开项目并进入虚拟环境**：
-    - 用 VS Code 打开 `LingChat` 文件夹。
-    - 打开新的终端 (`Terminal` -> `New Terminal`)。
-    - 激活虚拟环境：`.\venv\Scripts\activate`
+### 2. 克隆与进入项目
 
-> [!TIP] 或者重复上面打开命令行的步骤激活虚拟环境。
+首先，打开你的命令行终端（Windows上是`CMD`或`PowerShell`，Linux上是`Terminal`），然后执行以下命令。
 
-2. **拉取最新代码**：在终端中输入以下命令，从 GitHub 上拉取最新的代码。
+```bash
+# 克隆 develop 分支的源代码
+git clone -b develop https://github.com/SlimeBoyOwO/LingChat.git
+
+# 进入项目目录
+cd LingChat
+```
+
+> [!NOTE]
+>
+> 如果下载太慢，使用下面的命令：
+>
+> ```bash
+> git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat.git
+> ```
+
+### 3. 创建与激活虚拟环境
+
+为了不污染你系统的全局 Python 环境，我们强烈建议为 LingChat 创建一个独立的虚拟环境。
+
+```bash
+# 创建一个名为 venv 的虚拟环境
+uv venv venv
+```
+
+环境创建成功后，需要激活它。激活命令在 Windows 和 Linux 上有所不同：
+
+- **在 Windows (CMD 或 PowerShell) 中激活：**
 
     ```powershell
-    git pull
+    .\venv\Scripts\activate
     ```
 
-3. **更新依赖库（重要）**：有时候，新的代码会需要新的第三方库。所以，拉取代码后最好都执行一次更新依赖的命令。
+- **在 Linux 或 macOS (Bash/Zsh) 中激活：**
 
-    ```powershell
-    pip install -e .
+    ```bash
+    source venv/bin/activate
     ```
 
-    `pip` 很智能，它只会安装新增或有变动的库，不会重复安装已有的库。
+激活成功后，你的命令行提示符前面会出现 `(venv)` 字样。
 
-4. **重新运行程序**：
+### 4. 安装项目依赖
 
-    现在双击 start.windows.bat，你运行的就是包含所有最新改动的 LingChat 啦！
+请确保你的虚拟环境已激活。然后运行以下命令来安装所有必需的 Python 库：
 
-## 三、常见问题 (FAQ)
+```bash
+uv pip install -r pyproject.toml
+```
 
-- **Q: 输入 `git` 或 `python` 命令时，提示“不是内部或外部命令...”？**
+这个过程会根据你的网络情况花费几分钟到十几分钟不等，请耐心等待。
 
-   A: 这说明 Git 或 Python 没有被正确安装，或者安装时忘记勾选 "Add to PATH"。请回到【准备工作】章节，卸载后重新安装，**务必记得勾选 "Add to PATH" 选项**。
+### 5. 运行 LingChat
+
+所有依赖安装完成后，请在根目录新建一个文件，把他命名为.env，把.env.example，复制到.env中并保存。然后执行以下命令即可启动 LingChat：
+
+```bash
+python main.py
+```
+
+### 6. 拉取最新的更新
+
+当你想获取最新的开发版代码时，请在项目根目录（`LingChat` 文件夹内）执行以下命令。
+
+```bash
+# 步骤一：放弃所有本地修改，避免冲突（注意：会丢失你的本地改动，请做好备份）
+git reset --hard origin/develop
+
+# 步骤二：从 GitHub 拉取最新代码
+git pull
+```
+
+**提示**：如果更新后 `pyproject.toml` 文件发生了变化，你需要再次运行 `uv pip install -r pyproject.toml` 来同步最新的依赖。
+
+## 五、常见问题 (FAQ)
+
+- **Q: 输入 `git` 或 `python` 或 `uv` 命令时，提示“不是内部或外部命令...”？**
+
+   A: 这说明工具没有被正确安装，或者安装时忘记勾选 "Add to PATH"。请回到【准备工作】章节，卸载后重新安装，**务必记得勾选 "Add to PATH" 选项**。
 
 - **Q: 运行 `python main.py` 时报错 `ModuleNotFoundError: No module named 'xxxx'`？**
 
    A: 这个错误说明缺少某个库。通常有两个原因：
+
     1. 你忘记激活虚拟环境了。请检查终端提示符前面是否有 `(venv)` 字样，如果没有，请执行 `.\venv\Scripts\activate`。
-    2. 你忘记安装依赖了，或者更新代码后没有同步更新依赖。请在激活虚拟环境后，执行 `pip install -r requirements.txt`。
+
+    2. 你忘记安装依赖了，或者更新代码后没有同步更新依赖。请在激活虚拟环境后，执行 `uv pip install -r pyproject.toml`。
 
 - **Q: `git pull` 更新代码时提示错误或冲突 (conflict) 怎么办？**
 
@@ -175,7 +264,7 @@ LingChat 的开发版更新非常快，当你想要体验最新的功能或修�
 
     **注意：这个命令会丢弃你可能在本地做的任何修改。** 对于只想体验最新版的用户来说，这是最直接有效的方法。
 
-> [!TIP] 你的聊天记录，设置等不会丢失，请放心。
+> [!TIP] 你的聊天记录，设置等应该不会丢失，不过推荐备份。
 
 ---
 

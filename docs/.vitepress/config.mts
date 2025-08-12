@@ -97,7 +97,8 @@ export default withMermaid(
             items: [
               { text: 'RAG 系统', link: '/manual/expand/rag' },
               { text: '语音生成', link: '/manual/expand/voice' },
-              { text: '视觉功能', link: '/manual/expand/vision' }
+              { text: '视觉功能', link: '/manual/expand/vision' },
+{text:'桌宠', link: '/manual/expand/ling_pet'}
             ]
           },
         ],

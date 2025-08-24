@@ -154,7 +154,7 @@ C) 使用 Conda（如果已安装 Miniconda/Anaconda）：
     ```
     如果没有安装 uv，也可以使用 pip（部分项目依赖可能需要 uv 特性）：
     ```powershell
-    python -m pip install -r pyproject.toml
+    python -m pip install .
     ```
 
 5. **选择解释器**: 按下 `Ctrl+Shift+P` 打开命令面板，输入 `Python: Select Interpreter`，然后选择对应虚拟环境的解释器（'.\venv' 或 conda 环境）。

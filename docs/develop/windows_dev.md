@@ -41,7 +41,15 @@ Python 是 LingChat 使用的编程语言。
     2. **【非常重要！】** 在安装界面的最下方，**务必勾选 "Add Python to PATH"** 选项，然后再点击 "Install Now"。
     3. 等待安装完成即可。
 
-### 4. 安装 uv
+### 4x0. 安装 Conda（用于环境管理）
+
+如果你习惯使用 Conda（Anaconda 或 Miniconda）来管理虚拟环境和依赖 
+- **安装方法**：
+     1. 下载 Windows 安装程序（推荐 64-bit）。
+     2. 双击运行安装程序，接受默认选项即可。安装时可选择将 Conda 添加到 PATH（可选，但推荐使用 Anaconda Prompt 或在 VS Code 中选择解释器）。
+     3. 安装完成后，打开 "Anaconda Prompt" 或 PowerShell（已配置 Conda）进行后续操作。
+
+### 4x1. 或者安装 uv（用于环境管理）
 
 uv 是一个由 Ruff 团队开发的、非常快的 Python 包管理器，我们将用它来安装 LingChat 的运行依赖。
 
@@ -74,22 +82,18 @@ VS Code (Visual Studio Code) 是最主流的代码编辑器，界面现代，运
 2. **打开命令行工具**：
     - 进入你刚刚创建的 `MyProjects` 文件夹。
     - 在文件夹窗口的地址栏里，输入 `cmd` 然后按回车键。这会弹出一个黑色的命令行窗口。
+3. **Fork lingchat仓库至您的账户**
 
 3. **下载代码**：在弹出的黑色窗口中，复制并粘贴以下命令，然后按回车键。
 
 ```bash
-git clone -b develop https://github.com/SlimeBoyOwO/LingChat.git
+git clone -b develop https://github.com/your_name/LingChat.git
 ```
 
 - `git clone` 是下载命令。
 - `-b develop` 表示我们要下载 `develop` 分支（也就是最新的开发版）。
+- `your_name` 表示您的github账户名
 
-> [!NOTE]
-> 如果下载太慢，使用下面的命令：
->
-> ```bash
-> git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat.git
-> ```
 
 当你看到命令行提示完成，并且 `MyProjects` 文件夹下出现了一个名为 `LingChat` 的新文件夹时，就说明代码已经成功下载到你的电脑里了！
 
@@ -111,41 +115,56 @@ LingChat是一个python项目，所以我们要给VS code安装Python插件。�
 
 现在，我们需要为 LingChat 创建一个隔离的、独立的 Python 运行环境并安装其所需的各种库。
 
-1. **打开终端**: 在 VS Code 的顶部菜单栏中，选择 "终端" -> "新建终端"。这会在 VS Code 的下方打开一个命令行面板。
+下面给出三种常见方式（任选其一）来创建和激活虚拟环境：使用 uv、使用 Python 自带的 venv、使用 Conda。
 
-2. **创建虚拟环境**: 在打开的终端中，输入并执行以下命令，来创建一个名为 `venv` 的虚拟环境。
-
+#### 2.3.1创建虚拟环境
+A) 使用 uv：
+1. **打开终端**: 在 VS Code 的顶部菜单栏中，选择 "终端" -> "新建终端"。
+2. **创建虚拟环境**:
     ```powershell
     uv venv venv
     ```
-
-3. **激活虚拟环境**: 继续在终端中执行以下命令来激活刚刚创建的环境。
-
+3. **激活虚拟环境**:
     ```powershell
     .\venv\Scripts\activate
     ```
 
-    激活成功后，你会看到终端的提示符前面出现了 `(.venv)` 的字样。
+B) 使用 Python 自带 venv：
+1. 在终端执行：
+    ```powershell
+    python -m venv venv
+    ```
+2. 激活：
+    ```powershell
+    .\venv\Scripts\activate
+    ```
 
-4. **安装项目依赖**: 项目的依赖项现在记录在 `pyproject.toml` 文件中。使用我们之前安装的 `uv` 工具，执行以下命令来安装所有依赖。
+C) 使用 Conda（如果已安装 Miniconda/Anaconda）：
+1. 在 Anaconda Prompt 或 PowerShell（已配置 Conda）中执行：
+    ```powershell
+    conda env create -f environment.yaml
+    conda activate lingchat
+    ```
+2. 如果需要把 conda 环境与 VS Code 关联，按 Ctrl+Shift+P -> Python: Select Interpreter，然后选择带有 (conda) 的解释器。
 
+#### 2.3.2安装项目依赖
+4. 环境激活后，如果您使用 uv 或 pip 要手动安装项目依赖。在激活的环境中运行：
     ```powershell
     uv pip install -r pyproject.toml
     ```
+    如果没有安装 uv，也可以使用 pip（部分项目依赖可能需要 uv 特性）：
+    ```powershell
+    python -m pip install -r pyproject.toml
+    ```
 
-    这个过程会根据你的网络情况花费几分钟到十几分钟不等，`uv` 的安装速度很快，请耐心等待。
+5. **选择解释器**: 按下 `Ctrl+Shift+P` 打开命令面板，输入 `Python: Select Interpreter`，然后选择对应虚拟环境的解释器（'.\venv' 或 conda 环境）。
 
-5. **选择解释器**: 按下 `Ctrl+Shift+P` 打开命令面板，输入 `Python: Select Interpreter`，然后选择带有 `('.venv': venv)` 标识的那个 Python 解释器。这会告诉 VS Code 使用我们创建的虚拟环境来运行代码。
+6. **运行 LingChat**：在根目录新建 `.env`，将 `.env.example` 的内容复制到 `.env`，然后通过 VS Code 运行或使用命令：
+    ```powershell
+    python main.py
+    ```
 
-6. **运行 LingChat！**：万事俱备！
-
-现在请在根目录新建一个文件，把他命名为.env，把.env.example，复制到.env中并保存。然后点击 VS Code 右上角的 "▶" (运行) 按钮来方便地启动 LingChat。
-
-当然，如果不使用vscode，你也可以双击start.bat，它可以依据你刚刚创建的虚拟环境来启动程序。
-
-如果一切顺利，你应该能看到 LingChat 启动成功。恭喜你，成功运行了最新的开发版！
-
-## 三、获取最新的更新
+## 四、获取最新的更新
 
 LingChat 几乎每天都在更新，你可以随时查看并使用最新的更新。
 
@@ -154,7 +173,7 @@ LingChat 几乎每天都在更新，你可以随时查看并使用最新的更�
 > [!IMPORTANT]
 > **重要提示**：作为测试者，我们一般不修改本地代码。如果拉取更新时提示“冲突 (Conflict)”，最简单的解决方法是放弃所有本地修改。可以点击上图中的撤销箭头（放弃所有更改），将所有文件恢复到更新前的状态，然后再点击同步更改按钮拉取最新代码。如果你对某些文件（如人物设定）有自己的修改，这大概率不要紧，不过还是建议备份。
 
-## 四、纯命令行方式配置与使用 (Windows / Linux)
+## 五、纯命令行方式配置与使用 (Windows / Linux)
 
 如果你习惯使用命令行，本章节将指导你如何完全通过命令行来完成所有配置和更新操作。
 
@@ -186,38 +205,30 @@ cd LingChat
 
 为了不污染你系统的全局 Python 环境，我们强烈建议为 LingChat 创建一个独立的虚拟环境。
 
-```bash
-# 创建一个名为 venv 的虚拟环境
-uv venv venv
-```
+下面给出命令行方式的三种可选方案（任选其一）：
 
-环境创建成功后，需要激活它。激活命令在 Windows 和 Linux 上有所不同：
-
-- **在 Windows (CMD 或 PowerShell) 中激活：**
-
-    ```powershell
+- 使用 uv：（与上文一致）
+    ```bash
+    uv venv venv
     .\venv\Scripts\activate
     ```
 
-- **在 Linux 或 macOS (Bash/Zsh) 中激活：**
-
+- 使用 python -m venv：
     ```bash
-    source venv/bin/activate
+    python -m venv venv
+    .\venv\Scripts\activate
     ```
 
-激活成功后，你的命令行提示符前面会出现 `(venv)` 字样。
+- 使用 Conda：
+    ```bash
+    conda env create -f environment.yaml
+    conda activate lingchat
+    ```
 
-### 4. 安装项目依赖
+激活成功后，你的命令行提示符前面会出现 `(venv)` 或 `(lingchat)` 字样。
 
-请确保你的虚拟环境已激活。然后运行以下命令来安装所有必需的 Python 库：
 
-```bash
-uv pip install -r pyproject.toml
-```
-
-这个过程会根据你的网络情况花费几分钟到十几分钟不等，请耐心等待。
-
-### 5. 运行 LingChat
+### 4. 运行 LingChat
 
 所有依赖安装完成后，请在根目录新建一个文件，把他命名为.env，把.env.example，复制到.env中并保存。然后执行以下命令即可启动 LingChat：
 

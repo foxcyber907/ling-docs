@@ -126,7 +126,8 @@ export default withMermaid(
               { text: 'Windows 开发环境搭建', link: '/develop/windows_dev' },
               { text: '项目结构与实现概述', link: '/develop/project_structure' },
               {text : '剧情创作指南（测试版）',  link: '/develop/story_guide'},
-                { text: '人物创建指南',link: '/develop/character_guide' },
+              { text: '人物创建指南',link: '/develop/character_guide' },
+              { text: '代办列表',link: '/develop/todo.md' }
             ]
           }
         ]

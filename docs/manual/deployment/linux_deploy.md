@@ -70,6 +70,13 @@ pip3 install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+::: WARNING
+有[报告指出](https://github.com/foxcyber907/ling-docs/issues/12)使用 `Fedora 42 Workstation` 系统时，uv会无法使用。你可以尝试执行以下命令：
+```
+sudo dnf install gcc gobject-introspection-devel cairo-gobject-devel pkg-config python3-devel gtk4
+```
+:::
+
 ::: tip
 使用 uv 时需要先运行 `uv venv` 创建虚拟环境，然后使用 `uv pip install` 安装依赖，或者直接使用 `uv run` 命令来自动管理虚拟环境。
 :::

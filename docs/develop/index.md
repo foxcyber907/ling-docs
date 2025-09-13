@@ -13,4 +13,4 @@ description: 介绍LingChat开发的相关事宜，包括流程，项目结构�
 - [项目结构与实现概述](/develop/project_structure.md)
 - [Windows 开发环境搭建](/develop/windows_dev.md)
 - [剧本编写指南（测试版）](/develop/story_guide.md)
-- [人物卡制作指南[(/develop/character_guide.md]
+- [人物卡制作指南](/develop/character_guide.md)

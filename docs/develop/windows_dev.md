@@ -6,7 +6,7 @@ outline:
 ---
 # LingChat 开发版 Windows 环境配置与使用指南
 
-> [IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
+> [!IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
 
 LingChat 几乎每天都在更新，但是很长时间才会发布一个 release 版本。 
  

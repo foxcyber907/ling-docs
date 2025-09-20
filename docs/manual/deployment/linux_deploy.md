@@ -5,7 +5,9 @@ outline:
   level: [2, 4]
 ---
 
-# 🐧  Linux 部署
+# 🐧 Linux 部署
+
+> [IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
 
 - 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请使用Windows系统部署[Windows部署指南](/manual/deployment/win_deploy)
 

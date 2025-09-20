@@ -92,7 +92,7 @@ description: 解决 LingChat 常见技术问题，包括TTS服务问题、大模
 3. 尝试手动安装缺失的包
 
    ```bash
-   pip install -r requirements.txt
+   pip install .
    ```
 
 ## ERROR: Failed to activate the new virtual environment

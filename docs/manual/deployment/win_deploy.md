@@ -7,6 +7,8 @@ outline:
 
 # 📦 Windows 部署
 
+> [IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
+
 ::: info
 本教程为快速开始，如需从源码部署请可以参考[Windows 开发环境搭建](/develop/windows_dev.md)。
 :::

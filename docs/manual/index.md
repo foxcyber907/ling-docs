@@ -35,6 +35,8 @@ lastUpdated: false
 
 ### 基础部署教程
 
+> [IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
+
 这部分提供了 LingChat 的基础部署教程，包括如何安装、启动、配置、使用等。
 
 - [Windows 教程](/manual/deployment/win_deploy)

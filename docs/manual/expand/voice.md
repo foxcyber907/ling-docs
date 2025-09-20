@@ -5,6 +5,8 @@ description: 了解如何配置和使用LingChat的语音生成功能，包括 V
 
 #  🎙️ 语音功能使用说明
 
+> [IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
+
 ## 基础语音功能 VITS 使用
 
 - 若要使用 `Vits` 语音功能，Windows 用户请下载链接程序[simple-vits-api](https://github.com/Artrajz/vits-simple-api/releases)，Linux 用户请见[官方文档](https://github.com/Artrajz/vits-simple-api/blob/main/README_zh.md)，安卓用户......别想了性能太差基本用不了。

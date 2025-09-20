@@ -9,29 +9,26 @@ description: 面向开发者的部分，了解LingChat的项目结构和实现�
 
 ### 主程序
 
-- `ling_chat/main.py` 是主程序入口，负责启动后端服务（监听 8765 端口）
+- `ling_chat/main.py` 是主程序入口，负责启动后端服务（监听 env 文件里面指定配置的端口）
 - 你也可以直接在浏览器访问 `localhost:8765`，体验完整功能。
 - 使用根目录下的 `start.bat`，会自动激活 `venv` 虚拟环境并启动主程序。
-- 项目配置集中在 `.env` 文件，访问 `localhost:8765/settings` 可自动读取并生成可视化配置界面
+- 项目配置集中在 `.env` 文件，访问网页的 **高级设置** 可自动读取并生成可视化配置界面
 
 ## 程序结构
 
 ```mermaid
 graph TD
-    A[项目根目录] -->|包含| B[backend]
-    A -->|包含| C[frontend]
-    A -->|包含| D[data]
+    A[根目录] -->|包含| B[ling_chat]
     B -->|运行在8765端口| E[后端程序]
-    C -->|包含| F[HTML, JavaScript, CSS]
+    A -->|包含| C[frontend_v3]
+    A -->|包含| D[ling_chat/data（默认）]
+    C -->|包含| F[前端文件（vue版本）]
     D -->|存储| G[日志和缓存数据]
-    E -->|依赖| H[Python库]
-    F -->|渲染| I[用户界面]
-    G -->|备份| J[外部存储]
 ```
 
 - `ling_chat` 目录包含基于 Python 的后端服务，负责监听指定端口。
-- `ling_chat/static` 目录存放前端资源，包括 HTML、JavaScript 和 CSS 文件。
-- `ling_chat/data/logs` 用于存储日志、对话记录及缓存数据。此目录内容可安全删除，但如需备份聊天记录请提前保存。
+- `ling_chat/static` 目录存放前端资源，包括 静态资源、vue前端代码 等文件。
+- `ling_chat/data` 默认情况下用于存储日志、对话记录及缓存数据。此目录内容可安全删除，但如需备份聊天记录请提前保存。
 
 ## 其他相关
 

@@ -39,9 +39,15 @@ lastUpdated: false
 
 这部分提供了 LingChat 的基础部署教程，包括如何安装、启动、配置、使用等。
 
-- [Windows 教程](/manual/deployment/win_deploy)
-- [Android 教程](/manual/deployment/android_deploy)
-- [Linux 教程](/manual/deployment/linux_deploy)
+- [Windows 教程](/manual/deployment/win)
+- [Android 教程](/manual/deployment/android)
+- [Linux 教程](/manual/deployment/linux)
+
+由于新版 0.3.1 暂不完善，我们也提供旧版部署教程
+
+- [Windows 教程（旧版）](/manual/deployment/win_old)
+- [Android 教程（旧版）](/manual/deployment/android_old)
+- [Linux 教程（旧版）](/manual/deployment/linux_old)
 
 ### 附加功能
 

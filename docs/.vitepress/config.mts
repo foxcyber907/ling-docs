@@ -78,17 +78,16 @@ export default withMermaid(
             text: '用户手册',
             items: [
               { text: '介绍', link: '/manual/' },
-                { text: '在线体验', link: 'http://lingchat.top/' }
+              // { text: '在线体验', link: 'http://lingchat.top/' }
             ]
           },
           {
-            text: '部署方法',
+            text: '部署方法（旧版 - 0.3.1版之前）',
             collapsed: false,
             items: [
-              { text: 'Windows部署', link: '/manual/deployment/win_deploy' },
-              { text: 'Android部署', link: '/manual/deployment/android_deploy' },
-              { text: 'Linux部署', link: '/manual/deployment/linux_deploy' },
-                // { text: '从源码构建', link: '/manual/deployment/source_deploy' },
+              { text: 'Windows部署', link: '/manual/deployment/win_old' },
+              { text: 'Android部署', link: '/manual/deployment/android_old' },
+              { text: 'Linux部署', link: '/manual/deployment/linux_old' },
             ]
           },
           {
@@ -98,7 +97,7 @@ export default withMermaid(
               { text: 'RAG 系统', link: '/manual/expand/rag' },
               { text: '语音生成', link: '/manual/expand/voice' },
               { text: '视觉功能', link: '/manual/expand/vision' },
-{text:'桌宠', link: '/manual/expand/ling_pet'}
+              { text: '桌宠', link: '/manual/expand/ling_pet'}
             ]
           },
         ],
@@ -111,7 +110,7 @@ export default withMermaid(
               { text: 'LingChat 排障速查', link: '/faq/tech/error' },
               { text: '界面与启动排障', link: '/faq/ui/' },
               { text: '安卓部署排障', link: '/faq/tech/android' },
-                { text: 'Clone后修复指南', link: '/faq/clone.md' }
+              { text: 'Clone后修复指南', link: '/faq/clone.md' }
 
             ]
           },

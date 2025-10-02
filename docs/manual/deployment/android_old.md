@@ -10,10 +10,10 @@ outline:
 ::: info
 本教程提供两种部署方式，请按需使用哦=w=
 
-1. [手机+电脑的配合使用](/manual/deployment/android_deploy#phone_win_deploy)
+1. [手机+电脑的配合使用](/manual/deployment/android_old#phone_win_deploy)
    - 适合大多数用户，使用手机和电脑配合部署。
    - 使用手机浏览器访问电脑上的 LingChat，并在电脑上运行后端服务。
-2. [纯手机使用](/manual/deployment/android_deploy#pure_phone_deploy)
+2. [纯手机使用](/manual/deployment/android_old#pure_phone_deploy)
    - 适合没有电脑或想折腾的用户。
 :::
 
@@ -28,7 +28,7 @@ outline:
 
 > 请确保电脑和手机在 **同一网络** 下，否则无法使用。
 
-> 如有需要可参考 [Windows 部署](/manual/deployment/win_deploy) 教程。
+> 如有需要可参考 [Windows 部署](/manual/deployment/win_old) 教程。
 
 首先，查看电脑 ip 地址，如果你的电脑是 Windows 系统，先在键盘上同时按下 **Windows徽标键+字母R键** 输入 **cmd** 打开命令提示符，再在黑窗口中输入 **ipconfig** ，回车，窗口中可能出现以下内容：
 
@@ -73,7 +73,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 >
 > 华为或荣耀设备请跳过此步，因为暂时用不了。
 
-首先 [安装 tmoe](/manual/deployment/android_deploy#install_tmoe)。
+首先 [安装 tmoe](/manual/deployment/android_old#install_tmoe)。
 
 上下滑动屏幕选择 **修复 android 12** ，回车，看提示选择（一般全回车默认），直到下图：
 
@@ -99,10 +99,10 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 我们提供多种方式部署 LingChat，您可以选择最合适的进行操作。当一种方式不行时，可以更换另一种方式。
 
-1. [使用 tmoe 安装打包好的容器](/manual/deployment/android_deploy#use_tmoe)
+1. [使用 tmoe 安装打包好的容器](/manual/deployment/android_old#use_tmoe)
    - 基本上不会出现问题，最简便。
 
-2. [使用 proot-distro 和打包好的 python](/manual/deployment/android_deploy#use-proot-distro)
+2. [使用 proot-distro 和打包好的 python](/manual/deployment/android_old#use-proot-distro)
    - 更加轻量化，但可能有未知问题。
 
 #### 方法一：使用预先打包好的容器 {#use_tmoe}

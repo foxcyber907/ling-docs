@@ -9,7 +9,7 @@ outline:
 
 > [!IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
 
-- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请使用Windows系统部署[Windows部署指南](/manual/deployment/win_deploy)
+- 以下内容假设你对Linux系统有一定的了解，如果觉得难以理解，请使用Windows系统部署[Windows部署指南](/manual/deployment/win_old)
 
 ::: info
 本教程推荐使用 [uv](https://docs.astral.sh/uv/) 作为 Python 包管理器，它提供了更快的包安装速度和更好的依赖管理体验。当然，传统的 pip 和 conda 方式依然可用。

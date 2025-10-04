@@ -1,44 +1,41 @@
 ---
-title: Android 部署指南
-description: 详细指导如何在Android设备上部署LingChat，包括手机与电脑配合使用和纯手机部署两种方案。
+title: Android 旧版部署指南
+description: 详细指导如何在Android设备上部署旧版的LingChat，包括手机与电脑配合使用和纯手机部署两种方案。
 outline:
   level: [2, 5]
 ---
 
-# 📱 Android 部署指南
+# 📱 Android 旧版部署指南
 
-::: info
 本教程提供两种部署方式，请按需使用哦=w=
 
-1. [手机+电脑的配合使用](/manual/deployment/android_old#phone_win_deploy)
+1. [手机+电脑的配合使用](#phone_win_deploy)
    - 适合大多数用户，使用手机和电脑配合部署。
    - 使用手机浏览器访问电脑上的 LingChat，并在电脑上运行后端服务。
-2. [纯手机使用](/manual/deployment/android_old#pure_phone_deploy)
+2. [纯手机使用](#pure_phone_deploy)
    - 适合没有电脑或想折腾的用户。
-:::
 
-:::  warning
-在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
-:::
+> [!IMPORTANT]
+> 在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
 
 ## 一、 手机+电脑的配合使用 {#phone_win_deploy}
-
 
 ### 具体操作
 
 > 请确保电脑和手机在 **同一网络** 下，否则无法使用。
 
-> 如有需要可参考 [Windows 部署](/manual/deployment/win_old) 教程。
+> 如有需要可参考 [Windows 部署](./win_old.md) 教程。
 
 首先，查看电脑 ip 地址，如果你的电脑是 Windows 系统，先在键盘上同时按下 **Windows徽标键+字母R键** 输入 **cmd** 打开命令提示符，再在黑窗口中输入 **ipconfig** ，回车，窗口中可能出现以下内容：
 
 ![cmd-ipconfig](/assets/depoly_android/cmd-ipconfig.webp)
+
 记下其中的 **IPv4 地址** 后的 **ip地址**。
 
 然后在电脑上打开 LingChat，观察命令提示符（黑窗口）中是否有这一行字：
 
 ```txt
-INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://0.0.0.0:8765 (Press CTRL+C to quit)
 ```
 
 记下 `0.0.0.0:` 之后的数字，这是 **端口号** 。（可能与示例不同，请以实际为准）
@@ -73,7 +70,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 >
 > 华为或荣耀设备请跳过此步，因为暂时用不了。
 
-首先 [安装 tmoe](/manual/deployment/android_old#install_tmoe)。
+首先 [安装 tmoe](#install_tmoe)。
 
 上下滑动屏幕选择 **修复 android 12** ，回车，看提示选择（一般全回车默认），直到下图：
 
@@ -99,10 +96,10 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 我们提供多种方式部署 LingChat，您可以选择最合适的进行操作。当一种方式不行时，可以更换另一种方式。
 
-1. [使用 tmoe 安装打包好的容器](/manual/deployment/android_old#use_tmoe)
+1. [使用 tmoe 安装打包好的容器](#use_tmoe)
    - 基本上不会出现问题，最简便。
 
-2. [使用 proot-distro 和打包好的 python](/manual/deployment/android_old#use-proot-distro)
+2. [使用 proot-distro 和打包好的 python](#use-proot-distro)
    - 更加轻量化，但可能有未知问题。
 
 #### 方法一：使用预先打包好的容器 {#use_tmoe}
@@ -179,17 +176,14 @@ proot-distro install debian
 
 这时候 debian 应该安装好了，输入 `proot-distro login debian` 登录 debian。
 
-之后你需要克隆 LingChat项目文件，运行的命令有以下选择：
+之后你需要克隆 LingChat项目文件，如下：
 
 > [!NOTE] 命令都加上了加速站，如有介意者自行删除使用官方源。
 
-- `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺，且未适配手机界面。
-
-- `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
-
-- `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试，但未经官方审查。
-
-根据你自己需求选择一条命令运行。
+```bash
+git clone --depth 1 https://ghfast.top/github.com/SlimeBoyOwO/LingChat/
+cd LingChat
+```
 
 克隆完毕后，运行以下命令 **安装 python 及其依赖** ：
 
@@ -223,33 +217,22 @@ cd LingChat
 EOF
 
 chmod +x /root/lingchat.sh
-# 更新脚本
-tee /root/update.sh > /dev/null << 'EOF'
-cd LingChat
-git pull
-/root/python3.12.10/bin/python3.12 -m pip install -r requirements.txt
-EOF
-
-chmod +x /root/update.sh
 ```
 
-这样以后可以用 `bash lingchat.sh` 启动 LingChat，用 `bash update.sh` 命令更新 LingChat。
+这样以后可以用 `bash lingchat.sh` 启动 LingChat。
 
 ### 配置 LingChat
 
-::: info
-
-接下来的步骤请打开容器。
-
-如果你是使用 **方法一** 安装，在 ZeroTermux的终端输入 `debian` 启动安装好的容器。
-
-如果你是使用 **方法二** 安装，在 ZeroTermux的终端输入 `proot-distro login debian` 启动安装好的容器。
-
-:::
+> [!WARNING]
+> 接下来的步骤需打开容器。
+> 
+> 如果你是使用 **方法一** 安装，在 ZeroTermux的终端输入 `debian` 启动安装好的容器。
+> 
+> 如果你是使用 **方法二** 安装，在 ZeroTermux的终端输入 `proot-distro login debian` 启动安装好的容器。
 
 这样部署的 LingChat 不能直接使用，需要一些配置。
 
-首先，获取 api_key 等内容，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) ， [硅基流动API获取网站](https://api.siliconflow.com/) 等地方获取。
+首先，获取 api_key ，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) 获取。
 
 然后，在容器中先粘贴以下命令，再粘贴你的 api_key ，回车运行 ：
 
@@ -346,4 +329,4 @@ cd
 
 ### 更新 LingChat
 
-输入 `bash update.sh` 即可自动更新。
+旧版 LingChat 不支持更新

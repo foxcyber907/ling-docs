@@ -1,17 +1,11 @@
 ---
-title: Windows 部署教程
-description: 详细指导如何在Windows系统上部署LingChat，包括软件下载、安装步骤和首次启动配置指南。
+title: Windows 旧版部署教程
+description: 详细指导如何在Windows系统上部署旧版LingChat，包括软件下载、安装步骤和首次启动配置指南。
 outline:
   level: [2, 3]
 ---
 
 # 📦 Windows 部署
-
-> [!IMPORTANT] 文档已经过久没有更新，请慎重跟随文档进行操作
-
-::: info
-本教程为快速开始，如需从源码部署请可以参考[Windows 开发环境搭建](/develop/windows_dev.md)。
-:::
 
 ## 一、部署前的准备
 
@@ -24,15 +18,14 @@ outline:
 
 ### 下载软件
 
-- 在[release](https://github.com/SlimeBoyOwO/LingChat/releases)中，找到最新的版本，下载如 `LingChat_setup.exe` 的文件，下载完成后运行并安装LingChat。
+- 在[release](https://github.com/SlimeBoyOwO/LingChat/releases)中，找到 v0.3.0 版本，下载如 `LingChat_setup.exe` 的文件，下载完成后运行并安装LingChat。
 - 点击桌面快捷方式或安装目录下的 `LingChat.exe` 启动程序
 - 您也可以使用如LingChat.x.x.x.7z的文件解压后使用
 
-::: tip
-解压完成后可能会发生 `LingChat.exe` 不见了的情况，这多半是由于 Windows Defender 或者某杀毒软件把它当病毒干掉了。需要手动打开**Windows安全中心**，选择**病毒和威胁防护**一栏，允许该威胁。 或者在杀毒软件中，将LingChat.exe添加白名单。
-
-关于硬件调查，我们完全秉持自愿原则，您可以在[Ling Chat硬件调查](https://dash.myhblog.dpdns.org/)中查看调查数据
-:::
+> [!TIP]
+> 解压完成后可能会发生 `LingChat.exe` 不见了的情况，这多半是由于 Windows Defender 或者某杀毒软件把它当病毒干掉了。需要手动打开**Windows安全中心**，选择**病毒和威胁防护**一栏，允许该威胁。 或者在杀毒软件中，将LingChat.exe添加白名单。
+> 
+> 关于硬件调查，我们完全秉持自愿原则，您可以在[Ling Chat硬件调查](https://dash.myhblog.dpdns.org/)中查看调查数据，但是这个网站不太稳定，不一定打得开
 
 ## 三、首次启动配置
 

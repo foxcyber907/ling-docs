@@ -7,8 +7,6 @@ outline:
 
 # 📱 Android 部署指南
 
-> [!IMPORTANT] 此文档暂未更新到新版
-
 本教程提供两种部署方式，请按需使用哦=w=
 
 1. [手机+电脑的配合使用](#phone_win_deploy)
@@ -17,7 +15,8 @@ outline:
 2. [纯手机使用](#pure_phone_deploy)
    - 适合没有电脑或想折腾的用户。
 
-> [!IMPORTANT] 在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
+> [!IMPORTANT]
+> 在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
 
 ## 一、 手机+电脑的配合使用 {#phone_win_deploy}
 
@@ -26,17 +25,18 @@ outline:
 
 > 请确保电脑和手机在 **同一网络** 下，否则无法使用。
 
-> 如有需要可参考 [Windows 部署](/manual/deployment/win) 教程。
+> 如有需要可参考 [Windows 部署](./win.md) 教程。
 
 首先，查看电脑 ip 地址，如果你的电脑是 Windows 系统，先在键盘上同时按下 **Windows徽标键+字母R键** 输入 **cmd** 打开命令提示符，再在黑窗口中输入 **ipconfig** ，回车，窗口中可能出现以下内容：
 
 ![cmd-ipconfig](/assets/depoly_android/cmd-ipconfig.webp)
+
 记下其中的 **IPv4 地址** 后的 **ip地址**。
 
 然后在电脑上打开 LingChat，观察命令提示符（黑窗口）中是否有这一行字：
 
 ```txt
-INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://0.0.0.0:8765 (Press CTRL+C to quit)
 ```
 
 记下 `0.0.0.0:` 之后的数字，这是 **端口号** 。（可能与示例不同，请以实际为准）
@@ -69,7 +69,7 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 >
 > 另外你需要打开手机开发者选项，详情搜索百度。
 >
-> 华为或荣耀设备请跳过此步，因为暂时用不了。
+> 华为或荣耀设备请跳过此步，因为暂时用不了，请搜索：`安卓进程数量adb解限` 了解更多
 
 首先 [安装 tmoe](/manual/deployment/android#install_tmoe)。
 
@@ -97,10 +97,13 @@ INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
 
 我们提供多种方式部署 LingChat，您可以选择最合适的进行操作。当一种方式不行时，可以更换另一种方式。
 
-1. [使用 tmoe 安装打包好的容器](/manual/deployment/android#use_tmoe)
+> [!WARNING]
+> 方法一暂时失效，请使用方法二部署
+
+1. [使用 tmoe 安装打包好的容器](#use_tmoe)
    - 基本上不会出现问题，最简便。
 
-2. [使用 proot-distro 和打包好的 python](/manual/deployment/android#use-proot-distro)
+2. [使用 proot-distro 和打包好的 python](#use-proot-distro)
    - 更加轻量化，但可能有未知问题。
 
 #### 方法一：使用预先打包好的容器 {#use_tmoe}
@@ -158,7 +161,9 @@ OK啦，LingChat安装完毕！接下来到下面学习如何启动它。
 
 #### 方法二：使用 proot-distro 部署 {#use-proot-distro}
 
-输入以下命令 **安装 proot-distro**。
+##### 安装 proot-distro
+
+输入以下命令
 
 ```bash
 pkg install proot-distro -y
@@ -177,19 +182,9 @@ proot-distro install debian
 
 这时候 debian 应该安装好了，输入 `proot-distro login debian` 登录 debian。
 
-之后你需要克隆 LingChat项目文件，运行的命令有以下选择：
+##### apt 安装依赖
 
-> [!NOTE] 命令都加上了加速站，如有介意者自行删除使用官方源。
-
-- `git clone https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 main 分支，更稳定，但是功能较开发版有所欠缺，且未适配手机界面。
-
-- `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，更新更及时，但是可能会有未知的问题。
-
-- `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试，但未经官方审查。
-
-根据你自己需求选择一条命令运行。
-
-克隆完毕后，运行以下命令 **安装 python 及其依赖** ：
+运行以下命令
 
 ```bash
 # 备份 + 更换清华源 + 更新
@@ -202,10 +197,37 @@ deb https://security.debian.org/debian-security bookworm-security main contrib n
 EOF
 apt update
 
-#安装sqlite3依赖
-apt install sqlite3 -y
+# 安装依赖
+apt install sqlite3 git git-lfs whet curl -y
 
-#安装预先打包的 python3.12.10
+# 安装git lfs
+git lfs install
+```
+
+##### 克隆 LingChat 项目文件
+
+运行的命令有以下选择：
+
+> [!NOTE]
+> 命令加上了加速站，如有介意者自行删除使用官方源。
+
+> [!WARNING]
+> 命令3暂不可用，请使用另外两个命令
+
+1. 先运行 `git clone --depth 1 -b develop https://github.com/SlimeBoyOwO/LingChat.git` 然后运行 `git checkout v0.3.1-beta1` ：这会使用官方的 v0.3.1-beta1 版本，功能有所欠缺，有较多bug
+
+2. `git clone --depth 1 -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，问题修复和功能更新更及时
+
+3. `git clone -b develop-termux https://ghfast.top/github.com/shadow01a/LingChat/`  ：这会使用 shadow01a 的 develop-termux 分支，尽量平衡了更新进度和稳定性，且运行经过手机测试
+
+根据你自己需求选择一条命令运行。
+
+##### 安装 python 及其依赖
+
+运行以下命令：
+
+```bash
+# 安装预先打包的 python3.12.10
 wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/python-3.12.10-lingchat-250707.tar.gz
 tar -xzf /root/python-3.12.10-lingchat-250707.tar.gz -C /root
 rm -rf python-3.12.10-lingchat-250707.tar.gz
@@ -217,7 +239,7 @@ rm -rf python-3.12.10-lingchat-250707.tar.gz
 # 启动脚本
 tee /root/lingchat.sh > /dev/null << 'EOF'
 cd LingChat
-/root/python3.12.10/bin/python3.12 backend/windows_main.py
+/root/python3.12.10/bin/python3.12 main.py
 EOF
 
 chmod +x /root/lingchat.sh
@@ -225,7 +247,7 @@ chmod +x /root/lingchat.sh
 tee /root/update.sh > /dev/null << 'EOF'
 cd LingChat
 git pull
-/root/python3.12.10/bin/python3.12 -m pip install -r requirements.txt
+/root/python3.12.10/bin/python3.12 -m pip install -r pyproject.toml --upgrade
 EOF
 
 chmod +x /root/update.sh
@@ -233,26 +255,43 @@ chmod +x /root/update.sh
 
 这样以后可以用 `bash lingchat.sh` 启动 LingChat，用 `bash update.sh` 命令更新 LingChat。
 
+### 安装情感模型
+
+运行以下命令：
+
+```bash
+cd ling_chat/third_party/emotion_model_18emo
+wget https://www.modelscope.cn/models/kxdw2580/LingChat-emotion-model-18emo/resolve/master/model.safetensors
+cd ../../..
+```
+
 ### 配置 LingChat
 
-::: info
-
-接下来的步骤请打开容器。
-
-如果你是使用 **方法一** 安装，在 ZeroTermux的终端输入 `debian` 启动安装好的容器。
-
-如果你是使用 **方法二** 安装，在 ZeroTermux的终端输入 `proot-distro login debian` 启动安装好的容器。
-
-:::
+> [!WARNING]
+> 接下来的步骤需打开容器。
+> 
+> 如果你是使用 **方法一** 安装，在 ZeroTermux的终端输入 `debian` 启动安装好的容器。
+> 
+> 如果你是使用 **方法二** 安装，在 ZeroTermux的终端输入 `proot-distro login debian` 启动安装好的容器。
 
 这样部署的 LingChat 不能直接使用，需要一些配置。
 
-首先，获取 api_key 等内容，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) ， [硅基流动API获取网站](https://api.siliconflow.com/) 等地方获取。
+首先，获取 api_key 等内容，可在 [DeepSeek的官方API获取网站](https://platform.deepseek.com/) 获取。
+
+如果使用 [硅基流动API获取网站](https://api.siliconflow.com/) 的 api_key，需要额外的env文件配置，不会的人请不要使用
 
 然后，在容器中先粘贴以下命令，再粘贴你的 api_key ，回车运行 ：
 
 ```bash
+export TRANSLATE=false
 export API_KEY=
+```
+
+如果有百炼平台的 api_key，先粘贴以下命令，再粘贴你的 api_key ，回车运行 ：
+
+```bash
+export TRANSLATE=true
+export BAILIAN_API_KEY=
 ```
 
 之后再运行此命令：
@@ -264,14 +303,9 @@ tee /root/LingChat/.env > /dev/null << EOF
 
 ## API 与 模型 设置 BEGIN # 配置与AI模型和API相关的密钥和地址
 LLM_PROVIDER="webllm" # 在这里选择对话模型，只可以填写webllm, gemini, ollama, lmstudio四个选项，webllm代表通用需要联网的AI模型（如deepseek），ollama和lmstudio表示本地，gemini如名）
-
 CHAT_API_KEY="$API_KEY" # DeepSeek 或其他聊天模型的 API Key
-
-VD_API_KEY="sk-114514" # 图像识别模型的 API Key
 CHAT_BASE_URL="https://api.deepseek.com" # API的访问地址
-MODEL_TYPE="deepseek-chat" # 使用的模型类型
-VD_BASE_URL="https://api.siliconflow.cn/v1" # 视觉模型的API访问地址
-VD_MODEL="Pro/Qwen/Qwen2.5-VL-7B-Instruct" # 视觉模型的模型类型
+MODEL_TYPE="deepseek-chat" # 使用的模型类
 
 OLLAMA_BASE_URL="http://localhost:11434" # Ollama配置- 地址
 OLLAMA_MODEL="llama3" # Ollama配置- 模型
@@ -282,6 +316,20 @@ LMSTUDIO_API_KEY="lm-studio" # LM STUDIO 配置- APIKEY 似乎不需要
 
 GEMINI_API_KEY="sk-114514"
 GEMINI_MODEL_TYPE="gemini-pro"
+
+## 视觉模型设置 BEGIN # 配置 视觉模型 相关的密钥和地址
+VD_API_KEY="sk-114514" # 图像识别模型的 API Key
+VD_BASE_URL="https://api.siliconflow.cn/v1" # 视觉模型的API访问地址
+VD_MODEL="Pro/Qwen/Qwen2.5-VL-7B-Instruct" # 视觉模型的模型类型
+## 视觉模型设置 END
+
+## 翻译设置 BEGIN # 配置 翻译相关的密钥和地址
+TRANSLATE_LLM_PROVIDER="webllm" # 翻译模型提供者（同对话，推荐webllm）
+TRANSLATE_API_KEY="$BAILIAN_API_KEY" # 翻译模型的 API Key，推荐使用百炼平台的api_key
+TRANSLATE_API_URL="https://dashscope.aliyuncs.com/compatible-mode/v1" # 翻译模型的api链接，推荐不要修改
+TRANSLATE_MODEL="qwen3-30b-a3b-instruct-2507" # 翻译模型，推荐不要修改
+## 翻译设置 END
+
 ## API 与 模型 设置 END
 
 ## 对话功能设定 BEGIN # 配置RAG（检索增强生成）系统，让AI能“记忆”历史对话
@@ -324,8 +372,35 @@ EMOTION_BIND_ADDR="0.0.0.0" # 情感分析服务监听地址
 EMOTION_PORT=8000 # 情感分析服务监听端口
 ## 服务端口配置 END
 
-# 开发者设置 END
 
+## 语音合成 BEGIN # 配置语音合成API KEY和本地地址等
+SIMPLE_VITS_API_VITS_URL="http://localhost:23456/voice/vits" # SIMPLE_VITS_API(sva-vits)的语音合成API地址
+STYLE_BERT_VITS2_URL="http://localhost:5000/voice" # Style-bert-vits2(sbv2)的语音合成API地址
+SBV2API_API_URL="http://localhost:3000/synthesize" # Sbv2-Api(sbv2api)的语音合成API地址
+SIMPLE_VITS_API_BERT_VITS2_URL="http://127.0.0.1:6006/voice/bert-vits2" # Bert-Vits2(sva-bv2)的语音合成API地址
+GPT_SOVITS_API_URL="http://127.0.0.1:9880/tts" # GPT-SOVITS(gsv)的语音合成API地址
+GPT_SOVITS_REF_AUDIO="" # GPT-SOVITS的参考音频路径
+GPT_SOVITS_PROMPT_TEXT="" # GPT-SOVITS的参考音频文字版
+AIVIS_API_KRY="" # AIVIS的API密钥
+VOICE_FORMAT="wav" # 合成语音的格式，如无必要不建议修改
+TTS_TYPE="" # 合成语音的引擎，可选sva-bv2,gsv,sbv2,sva-vits,sbv2api,aivis（需要角色适配）
+## 语音合成 END
+
+## 实验性功能 BEGIN # 配置实验性功能
+ENABLE_EMOTION_CLASSIFIER=true # 启用/禁用情绪分类器（警告：同时关闭RAG功能后可大幅减少冷启动时间，但表情显示可能不正常）
+ENABLE_DIRECT_EMOTION_CLASSIFIER=true # 是否在原有情绪可用时直接使用原标签
+ENABLE_TRANSLATE=$TRANSLATE # 是否启用日语翻译功能，而不依赖于LLM的日语（需要新版人物，默认钦灵已适配）
+TRANSLATE_STREAM=true # 是否启用翻译流式处理（建议开启）
+OPEN_FRONTEND_APP=false # 是否在启动后端时自动打开前端应用 
+USE_STREAM=true # 是否使用LLM流式生成
+VOICE_CHECK=false # 是否启用语音合成检查
+## 实验性功能 END
+
+## 日程功能 BEGIN # 配置日程提醒功能（测试版）
+ENABLE_SCHEDULE=false # 是否启用日程功能（包括提醒、随机聊天和窥屏功能）
+## 日程功能 END
+
+# 开发者设置 END
 EOF
 
 cd
@@ -334,7 +409,8 @@ cd
 
 这样就配置完成了。
 
-> [!NOTE] 默认未开启RAG功能，因为这必定会导致启动后第一次的白屏，需要等待加载完成刷新才行，有需要请自行在网页打开或修改.env文件。
+> [!NOTE] 
+> 默认未开启RAG功能，因为这必定会导致启动后第一次的白屏，需要等待加载完成刷新才行，有需要请自行安装模型再在网页打开或修改.env文件。
 
 ### 启动 LingChat
 

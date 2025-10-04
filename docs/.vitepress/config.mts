@@ -82,6 +82,15 @@ export default withMermaid(
             ]
           },
           {
+            text: '部署方法（新版）',
+            collapsed: false,
+            items: [
+              { text: 'Windows部署', link: '/manual/deployment/win' },
+              { text: 'Android部署', link: '/manual/deployment/android' },
+              { text: 'Linux部署', link: '/manual/deployment/linux' },
+            ]
+          },
+          {
             text: '部署方法（旧版 - 0.3.1版之前）',
             collapsed: false,
             items: [
@@ -123,8 +132,9 @@ export default withMermaid(
               { text: '介绍', link: '/develop/' },
               { text: '开发流程', link: '/develop/dev_process' },
               { text: 'Windows 开发环境搭建', link: '/develop/windows_dev' },
+              { text: 'Style-Bert-VITS2模型训练', link: '/develop/Style-Bert-VITS2模型训练教程' },
               { text: '项目结构与实现概述', link: '/develop/project_structure' },
-              {text : '剧情创作指南（测试版）',  link: '/develop/story_guide'},
+              { text : '剧情创作指南（测试版）',  link: '/develop/story_guide'},
               { text: '人物创建指南',link: '/develop/character_guide' },
               { text: '代办列表',link: '/develop/todo.md' }
             ]

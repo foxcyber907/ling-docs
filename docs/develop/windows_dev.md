@@ -39,14 +39,14 @@ Git LFS 是 Git 的扩展，用于管理大型文件。
 - **安装方法**：安装完成后，在命令行执行：
   ```powershell
   git lfs install
-    ```
+  ```
 
 ### 3. 安装 Python
 
 LingChat 使用 Python 开发。
 
 * **下载地址**：[https://www.python.org/downloads/](https://www.python.org/downloads/)
-* **推荐版本**：3.12.10
+* **推荐版本**：3.12
 * **安装方法**：
 
   1. 下载后双击运行安装包。
@@ -58,7 +58,7 @@ LingChat 使用 Python 开发。
 
 * 下载 Windows 版 Anaconda/Miniconda 安装程序（推荐 64-bit）。
 * 双击运行安装包，接受默认选项。
-* 安装完成后使用 **Anaconda Prompt** 或 PowerShell 继续操作。
+* 安装完成后使用 **Anaconda Prompt** 或 **PowerShell** 继续操作。
 
 #### 4B. 使用 uv（推荐）
 
@@ -72,7 +72,7 @@ uv 是 Ruff 团队开发的超快 Python 包管理器。
 
 ### 5. 安装 VS Code（可选）
 
-> \[!NOTE]
+> [!NOTE]
 > 如果只是体验 LingChat，可以不安装 VS Code。
 
 * **下载地址**：[https://code.visualstudio.com/](https://code.visualstudio.com/)
@@ -100,6 +100,7 @@ uv 是 Ruff 团队开发的超快 Python 包管理器。
   ```
 
 * **如果要贡献代码**（需要提交 PR）：
+
   先在 GitHub fork 仓库，然后执行：
 
   ```bash

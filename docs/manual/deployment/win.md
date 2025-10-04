@@ -8,7 +8,7 @@ outline:
 # 📦 Windows 部署
 
 > [!TIP]
-> 本教程为快速开始，如需从源码部署请可以参考[Windows 开发环境搭建](../develop/windows_dev.md)。
+> 本教程为快速开始，如需从源码部署请可以参考[Windows 开发环境搭建](../../develop/windows_dev.md)。
 
 ## 一、部署前的准备
 

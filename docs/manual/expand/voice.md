@@ -24,7 +24,7 @@ description: 了解如何配置和使用LingChat的语音生成功能，包括 V
 
 ## Style-Bert-Vits2 使用
 
-Style-Bert-Vits2 语音合成更好，可自定义训练，详见[Style-Bert-VITS2模型训练教程](../develop/Style-Bert-VITS2模型训练教程.md)
+Style-Bert-Vits2 语音合成更好，还可以自定义训练，详见[Style-Bert-VITS2模型训练教程](../../develop/Style-Bert-VITS2模型训练教程.md)
 
 ### Windows
 

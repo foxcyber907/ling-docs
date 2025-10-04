@@ -16,6 +16,8 @@ LingChat 几乎每天都在更新，但是很长时间才会发布一个 release
 
 欢迎你，勇于探索的测试者！
 
+![c5845cf9148b2620b2740c40d73cc8ab](https://github.com/user-attachments/assets/2815cca5-e037-477e-8d18-c1eb385c5deb)
+
 ---
 
 ## 一、准备工作：安装必备工具

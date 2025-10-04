@@ -9,19 +9,15 @@ outline:
 
 > [!IMPORTANT] 此文档暂未更新到新版
 
-::: info
 本教程提供两种部署方式，请按需使用哦=w=
 
-1. [手机+电脑的配合使用](/manual/deployment/android#phone_win_deploy)
+1. [手机+电脑的配合使用](#phone_win_deploy)
    - 适合大多数用户，使用手机和电脑配合部署。
    - 使用手机浏览器访问电脑上的 LingChat，并在电脑上运行后端服务。
-2. [纯手机使用](/manual/deployment/android#pure_phone_deploy)
+2. [纯手机使用](#pure_phone_deploy)
    - 适合没有电脑或想折腾的用户。
-:::
 
-:::  warning
-在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
-:::
+> [!IMPORTANT] 在钦灵的努力下，手机端界面有了基础适配，在安装完毕后记得更新，不过界面可能仍有点奇怪。
 
 ## 一、 手机+电脑的配合使用 {#phone_win_deploy}
 

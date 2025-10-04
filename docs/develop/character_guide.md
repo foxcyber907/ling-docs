@@ -17,6 +17,8 @@ outline:
 2. 准备好为他的设定词
    > 没错，就这么点，很简单八！
 
+如果需要使用 GPT-SoVITS 的语音功能，还需要准备一个角色的语音文件
+
 > [!INFO] 立绘和头像的背景最好是透明的哦！你可以查阅搜索引擎以了解方法，或者在官方群聊中提问。
 
 ### 1. 为人物创建文件夹结构
@@ -27,15 +29,18 @@ outline:
 
 ```
 诺一钦灵
-|-avatars
-|   |-高兴.png
-|   |-伤心.png
-|   |-...
-|   |-头像.png
-|-settings.txt
+├─ avatars
+│   ├─ 高兴.png
+│   ├─ 伤心.png
+│   ├─ ...
+│   ├─ 头像.png
+├─ voice
+│   ├─ 音频文件.wav  # 如果有音频文件的话
+└─ settings.txt
 ```
 
-- 其中 `avatars` 文件夹用于存放 20 张图片，分别是 18 张对应不同情绪的差分，一张正常的待机表情，和一个用于展示的头像，都是 `png` 格式
+- 其中 `avatars` 文件夹用于存放 20 张图片，分别是 18 张对应不同情绪的差分，一张正常的待机表情，和一个用于展示的头像，都是 `png` 格式或 `webp` 格式（更推荐 webp ，因为体积更小还可以和 png 几乎一样清楚，建议转图片为 webp ，转换时质量选 80 即可）
+
 - `settings.txt` 用于存放用于展示的相关信息。
 
 ### 2. 立绘准备（avatars 部分）
@@ -67,7 +72,7 @@ avatars
 ```
 ### 3. settings.txt 准备
 
-核心文件 `settings.txt` 文件保存了一个角色所有的显示信息和性格等。以下是设定的详细说明：
+核心文件 `settings.txt` 文件保存了一个角色所有的显示信息和性格等。以下是设定的详细说明（如果想直接复制使用 **一定记得删除 # 号之后的注释！！** ）：
 
 ```
 title = 星空列车-音理            # 用于设定人物卡片标题
@@ -92,14 +97,14 @@ bubble_left = 23               # 情绪气泡显示的X轴位置
 # 以下语音部分只需填写你需要的即可，且不需要的部分可以删除
 voice_models = {
     "sva_speaker_id": "0",       # 选择simple vits api(vits版本)的音色ID
-    "sbv2_name": "",           # 选择style bert vits2的模型名
-    "sbv2_speaker_id": "0",     # 选择style bert vits2的模型说话人（不知道默认为0）
+    "sbv2_name": "",             # 选择style bert vits2的模型名
+    "sbv2_speaker_id": "0",      # 选择style bert vits2的模型说话人（不知道默认为0）
     "bv2_speaker_id": "",        # 选择bert vits2的模型名
-    "sbv2api_name": "",        # 选择sbv2api的模型名
+    "sbv2api_name": "",          # 选择sbv2api的模型名
     "sbv2api_speaker_id": "0",   # 选择sbv2api的模型说话人（不知道默认为0）
     "gsv_voice_text": "",        # 填写gpt-sovits的示例音频参考文本
     "gsv_voice_filename": "",    # 填写gpt-sovits的示例音频参考文本
-    "aivis_model_uuid": ""      # 填写aivis的模型uuid
+    "aivis_model_uuid": ""       # 填写aivis的模型uuid
 }
 tts_type = ""  # 填写默认的语音项目，目前项目支持的是：sva，sbv2，sbv2api，bv2，gsv，aivis
 

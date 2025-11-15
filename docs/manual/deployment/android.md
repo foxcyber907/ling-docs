@@ -175,7 +175,7 @@ proot-distro install debian
 >
 > ```bash
 > pkg install wget -y
-> wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/proot-distro-debian-bookwarm-0721.tar.xz
+> wget https://modelscope.cn/models/lingchat-research-studio/LingChat-phone-file/resolve/master/proot-distro-debian-bookwarm-0721.tar.xz
 > proot-distro restore ./proot-distro-debian-bookwarm-0721.tar.xz
 > rm -rf proot-distro-debian-bookwarm-0721.tar.xz
 > ```
@@ -212,7 +212,7 @@ git lfs install
 > 命令加上了加速站，如有介意者自行删除使用官方源。
 
 > [!WARNING]
-> 命令3暂不可用，请使用另外两个命令
+> 命令2和3暂不可用，请使用另外两个命令
 
 1. 先运行 `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat.git` 然后运行 `git checkout v0.3.1-beta1` ：这会使用官方的 v0.3.1-beta1 版本，功能有所欠缺，有较多bug
 
@@ -228,7 +228,7 @@ git lfs install
 
 ```bash
 # 安装预先打包的 python3.12.10
-wget https://modelscope.cn/models/kxdw2580/LingChat-phone-file/resolve/master/python-3.12.10-lingchat-250707.tar.gz
+wget https://modelscope.cn/models/lingchat-research-studio/LingChat-phone-file/resolve/master/python-3.12.10-lingchat-250707.tar.gz
 tar -xzf /root/python-3.12.10-lingchat-250707.tar.gz -C /root
 rm -rf python-3.12.10-lingchat-250707.tar.gz
 ```
@@ -261,7 +261,7 @@ chmod +x /root/update.sh
 
 ```bash
 cd ling_chat/third_party/emotion_model_18emo
-wget https://www.modelscope.cn/models/kxdw2580/LingChat-emotion-model-18emo/resolve/master/model.safetensors
+wget https://www.modelscope.cn/models/lingchat-research-studio/LingChat-emotion-model-18emo/resolve/master/model.safetensors
 cd ../../..
 ```
 

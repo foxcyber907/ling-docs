@@ -198,7 +198,7 @@ EOF
 apt update
 
 # 安装依赖
-apt install sqlite3 git git-lfs whet curl -y
+apt install sqlite3 git git-lfs wget curl -y
 
 # 安装git lfs
 git lfs install
@@ -214,7 +214,7 @@ git lfs install
 > [!WARNING]
 > 命令3暂不可用，请使用另外两个命令
 
-1. 先运行 `git clone --depth 1 -b develop https://github.com/SlimeBoyOwO/LingChat.git` 然后运行 `git checkout v0.3.1-beta1` ：这会使用官方的 v0.3.1-beta1 版本，功能有所欠缺，有较多bug
+1. 先运行 `git clone -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat.git` 然后运行 `git checkout v0.3.1-beta1` ：这会使用官方的 v0.3.1-beta1 版本，功能有所欠缺，有较多bug
 
 2. `git clone --depth 1 -b develop https://ghfast.top/github.com/SlimeBoyOwO/LingChat/`  ：这会使用官方的 develop 分支，问题修复和功能更新更及时
 

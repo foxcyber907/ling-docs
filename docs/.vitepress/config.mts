@@ -137,8 +137,9 @@ export default withMermaid(
               { text: '剧情创作指南（测试版）',  link: '/develop/story_guide'},
               { text: '人物创建指南',link: '/develop/character_guide' },
               // { text: '代办列表',link: '/develop/todo' },
-	      { text: '简单使用dev版本',link: '/develop/dev_guide' },
-	      { text: 'LingPal使用指南',link: '/develop/pal_instruct' },
+	            { text: '简单使用dev版本',link: '/develop/dev_guide' },
+	            { text: 'LingPal使用指南',link: '/develop/pal_instruct' },
+              { text: 'LingChat 后端代码结构',link: '/develop/backend' },
             ]
           }
         ]

@@ -65,23 +65,23 @@ install_dependencies() {
                     sudo yum install -y curl
                 fi
             fi
-            if ! command -v python3 &> /dev/null; then
+            if ! command -v python3 &> /dev/null || ! command -v pip3 &> /dev/null; then
                 if [ "$ID" = "fedora" ]; then
-                    sudo dnf install -y python3
+                    sudo dnf install -y python3 python3-pip
                 else
-                    sudo yum install -y python3
+                    sudo yum install -y python3 python3-pip
                 fi
             fi
             ;;
         arch)
             if ! command -v git &> /dev/null; then
-                sudo pacman -Sy --noconfirm git
+                sudo pacman -S --noconfirm git
             fi
             if ! command -v curl &> /dev/null; then
-                sudo pacman -Sy --noconfirm curl
+                sudo pacman -S --noconfirm curl
             fi
             if ! command -v python &> /dev/null; then
-                sudo pacman -Sy --noconfirm python python-pip
+                sudo pacman -S --noconfirm python python-pip
             fi
             ;;
         *)
@@ -105,7 +105,7 @@ install_git_lfs() {
                 fi
                 ;;
             arch)
-                sudo pacman -Sy --noconfirm git-lfs
+                sudo pacman -S --noconfirm git-lfs
                 ;;
         esac
         git lfs install
@@ -137,9 +137,8 @@ clone_project() {
         git reset --hard origin/develop
         git pull
     else
-        mkdir -p "$(pwd)"
-        cd "$(pwd)"
         git clone -b develop $clone_url
+        cd "$project_dir"
     fi
 }
 
@@ -164,7 +163,7 @@ create_launch_script() {
     log_info "创建启动脚本..."
     cat > "$(pwd)/start_lingchat.sh" << 'EOF'
 #!/bin/bash
-cd "$(pwd)/LingChat"
+cd "$(dirname -- "$0")"
 source venv/bin/activate
 python3 main.py
 EOF
@@ -173,7 +172,7 @@ EOF
     
     cat > "$(pwd)/update_lingchat.sh" << 'EOF'
 #!/bin/bash
-cd "$(pwd)/LingChat"
+cd "$(dirname -- "$0")"
 git fetch origin
 git reset --hard origin/develop
 git pull

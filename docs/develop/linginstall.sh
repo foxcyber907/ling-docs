@@ -135,7 +135,6 @@ clone_project() {
         cd "$project_dir"
         git fetch origin
         git reset --hard origin/develop
-        git pull
     else
         git clone -b develop $clone_url
         cd "$project_dir"
@@ -144,7 +143,6 @@ clone_project() {
 
 setup_venv() {
     log_info "配置 Python 虚拟环境..."
-    cd "$(pwd)/LingChat"
 
     if [ ! -d "venv" ]; then
         python3 -m venv venv
@@ -175,7 +173,6 @@ EOF
 cd "$(dirname -- "$0")"
 git fetch origin
 git reset --hard origin/develop
-git pull
 source venv/bin/activate
 pip install .
 echo "更新完成！"

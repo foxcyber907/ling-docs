@@ -309,8 +309,6 @@ export TRANSLATE=true && export BAILIAN_API_KEY=
 之后再运行此命令：
 
 ```bash
-rm /root/LingChat/.env
-
 tee /root/LingChat/.env > /dev/null << EOF
 # 基础设置 BEGIN
 

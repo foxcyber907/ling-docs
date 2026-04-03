@@ -14,13 +14,13 @@ hero:
   actions:
     - theme: brand
       text: 用户手册
-      link: /manual/
+      link: /manual/index.md
     - theme: brand
       text: 常见问题
-      link: /faq/
+      link: /faq/index.md
     - theme: alt
       text: 开发文档
-      link: /develop/
+      link: /develop/index.md
 
 features:
 - icon: 🔍  

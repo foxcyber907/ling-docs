@@ -17,7 +17,7 @@
 - [x] Script/Assets/SoundEffects 用于存放游戏需要用的音效资源
 - [x] Script/Assets/BGMs 用于存放游戏播放的背景音乐
 - [x] Script/Characters 存放剧本游戏里设定各个人物的信息，结构与普通 Character 一致
-- [x] Script/Charpters 用于定义剧本文件的详细驱动内容
+- [x] Script/Chapters 用于定义剧本文件的详细驱动内容
 
 ```
 📂 game_data/Script/

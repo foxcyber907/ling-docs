@@ -84,7 +84,7 @@ pip install uv
 git clone --depth 1 https://ghfast.top/github.com/litagin02/Style-Bert-VITS2.git
 cd Style-Bert-VITS2
 uv venv
-source .venv\Scripts\activate
+source .venv/bin/activate
 uv pip install "torch<2.4" "torchaudio<2.4" --index-url https://download.pytorch.org/whl/cu118 #用于GPU合成，CPU请把后面的 cu118 换成 cpu
 uv pip install -r requirements.txt
 python initialize.py
